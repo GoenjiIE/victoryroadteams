@@ -1,74 +1,76 @@
 fetch("data/characters.json")
   .then(response => response.json())
-  .then(personajes => {
-    const container = document.getElementById("personajes-container");
+  .then(characters => {
+    const container = document.getElementById("characters-container");
 
-    personajes.forEach(personaje => {
+    characters.forEach(character => {
       const card = document.createElement("div");
-      card.classList.add("personaje-card");
-      card.setAttribute("data-posicion", personaje.posicion.toUpperCase());
-      card.setAttribute("data-genero", personaje.genero.toLowerCase());
+      card.classList.add("character-card");
+      card.setAttribute("data-position", character.position.toUpperCase());
+      card.setAttribute("data-gender", character.gender.toLowerCase());
+      card.setAttribute("data-affinity", character.affinity.toLowerCase());
 
       const img = document.createElement("img");
-      img.src = personaje.sprite;
-      img.alt = personaje.nombre;
+      img.src = character.sprite;
+      img.alt = character.name;
       img.classList.add("sprite");
 
-      const nombre = document.createElement("h3");
-      nombre.textContent = personaje.nombre;
+      const name = document.createElement("h3");
+      name.textContent = character.name;
 
-      // AFINIDAD → sprite
-      const afinidadImg = document.createElement("img");
-      const afinidadLower = personaje.afinidad.toLowerCase();
-      afinidadImg.src = `sprites/afinidades/${afinidadLower}.png`;
-      afinidadImg.alt = personaje.afinidad;
-      afinidadImg.classList.add("icono");
-      afinidadImg.title = personaje.afinidad;
+      // Affinity icon
+      const affinityImg = document.createElement("img");
+      affinityImg.src = `sprites/affinities/${character.affinity.toLowerCase()}.png`;
+      affinityImg.alt = character.affinity;
+      affinityImg.classList.add("icon");
+      affinityImg.title = character.affinity;
 
-      // POSICIÓN → sprite
-      const posicionImg = document.createElement("img");
-      const posicionLower = personaje.posicion.toLowerCase();
-      posicionImg.src = `sprites/posiciones/${posicionLower}.png`;
-      posicionImg.alt = personaje.posicion;
-      posicionImg.classList.add("icono");
-      posicionImg.title = personaje.posicion;
+      // Position icon
+      const positionImg = document.createElement("img");
+      positionImg.src = `sprites/positions/${character.position.toLowerCase()}.png`;
+      positionImg.alt = character.position;
+      positionImg.classList.add("icon");
+      positionImg.title = character.position;
 
-      // GÉNERO → sprite
-      const generoImg = document.createElement("img");
-      const generoLower = personaje.genero.toLowerCase();
-      generoImg.src = `sprites/genero/${generoLower}.png`;
-      generoImg.alt = personaje.genero;
-      generoImg.classList.add("icono");
-      generoImg.title = personaje.genero;
+      // Gender icon
+      const genderImg = document.createElement("img");
+      genderImg.src = `sprites/gender/${character.gender.toLowerCase()}.png`;
+      genderImg.alt = character.gender;
+      genderImg.classList.add("icon");
+      genderImg.title = character.gender;
 
       card.appendChild(img);
-      card.appendChild(nombre);
-      card.appendChild(afinidadImg);
-      card.appendChild(posicionImg);
-      card.appendChild(generoImg);
+      card.appendChild(name);
+      card.appendChild(affinityImg);
+      card.appendChild(positionImg);
+      card.appendChild(genderImg);
 
       container.appendChild(card);
     });
 
-    aplicarFiltros();
+    applyFilters();
   });
 
-document.getElementById("filtro-posicion").addEventListener("change", aplicarFiltros);
-document.getElementById("filtro-genero").addEventListener("change", aplicarFiltros);
+document.getElementById("filter-position").addEventListener("change", applyFilters);
+document.getElementById("filter-gender").addEventListener("change", applyFilters);
+document.getElementById("filter-affinity").addEventListener("change", applyFilters);
 
-function aplicarFiltros() {
-  const filtroPos = document.getElementById("filtro-posicion").value.toUpperCase();
-  const filtroGen = document.getElementById("filtro-genero").value.toLowerCase();
+function applyFilters() {
+  const filterPos = document.getElementById("filter-position").value.toUpperCase();
+  const filterGen = document.getElementById("filter-gender").value.toLowerCase();
+  const filterAff = document.getElementById("filter-affinity").value.toLowerCase();
 
-  const cards = document.querySelectorAll(".personaje-card");
+  const cards = document.querySelectorAll(".character-card");
 
   cards.forEach(card => {
-    const pos = card.getAttribute("data-posicion");
-    const gen = card.getAttribute("data-genero");
+    const pos = card.getAttribute("data-position");
+    const gen = card.getAttribute("data-gender");
+    const aff = card.getAttribute("data-affinity");
 
-    const coincidePos = filtroPos === "TODOS" || pos === filtroPos;
-    const coincideGen = filtroGen === "todos" || gen === filtroGen;
+    const matchesPos = filterPos === "ALL" || pos === filterPos;
+    const matchesGen = filterGen === "all" || gen === filterGen;
+    const matchesAff = filterAff === "all" || aff === filterAff;
 
-    card.style.display = (coincidePos && coincideGen) ? "block" : "none";
+    card.style.display = (matchesPos && matchesGen && matchesAff) ? "block" : "none";
   });
 }
