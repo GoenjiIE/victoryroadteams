@@ -1,66 +1,164 @@
 [
   {
-    "id": 1,
-    "name": "Mark Evans",
-    "position": "GK",
-    "affinity": "earth",
-    "gender": "male",
-    "sprite": "sprites/characters/mark_evans.png"
+    "name": "aitor_cazador",
+    "position": "df",
+    "affinity": "wood",
+    "gender": "male"
   },
   {
-    "id": 2,
-    "name": "Axel Blaze",
-    "position": "FW",
-    "affinity": "fire",
-    "gender": "male",
-    "sprite": "sprites/characters/axel_blaze.png"
-  },
-  {
-    "id": 3,
-    "name": "Jude Sharp",
-    "position": "MF",
+    "name": "arion_sherwind",
+    "position": "mf",
     "affinity": "wind",
-    "gender": "male",
-    "sprite": "sprites/characters/jude_sharp.png"
+    "gender": "male"
   },
   {
-    "id": 4,
-    "name": "Jack Wallside",
-    "position": "DF",
+    "name": "axel_blaze",
+    "position": "fw",
+    "affinity": "fire",
+    "gender": "male"
+  },
+  {
+    "name": "bai_long",
+    "position": "fw",
+    "affinity": "wind",
+    "gender": "male"
+  },
+  {
+    "name": "byron_love",
+    "position": "mf",
+    "affinity": "wood",
+    "gender": "male"
+  },
+  {
+    "name": "caleb_stonewall",
+    "position": "mf",
+    "affinity": "fire",
+    "gender": "male"
+  },
+  {
+    "name": "erik_eagle",
+    "position": "mf",
+    "affinity": "wood",
+    "gender": "male"
+  },
+  {
+    "name": "gabriel_garcia",
+    "position": "df",
+    "affinity": "wood",
+    "gender": "male"
+  },
+  {
+    "name": "goldie_lemon",
+    "position": "df",
+    "affinity": "fire",
+    "gender": "female"
+  },
+  {
+    "name": "heath_moore",
+    "position": "fw",
+    "affinity": "fire",
+    "gender": "male"
+  },
+  {
+    "name": "hurley_kane",
+    "position": "df",
+    "affinity": "wind",
+    "gender": "male"
+  },
+  {
+    "name": "jack_wallside",
+    "position": "df",
     "affinity": "earth",
-    "gender": "male",
-    "sprite": "sprites/characters/jack_wallside.png"
+    "gender": "male"
   },
   {
-    "id": 5,
-    "name": "Erik Eagle",
-    "position": "MF",
+    "name": "jean_pierre_lapin",
+    "position": "df",
+    "affinity": "earth",
+    "gender": "male"
+  },
+  {
+    "name": "jordan_greenway",
+    "position": "mf",
     "affinity": "wood",
-    "gender": "male",
-    "sprite": "sprites/characters/erik_eagle.png"
+    "gender": "male"
   },
   {
-    "id": 6,
-    "name": "Byron Love",
-    "position": "MF",
+    "name": "jude_sharp",
+    "position": "mf",
+    "affinity": "wind",
+    "gender": "male"
+  },
+  {
+    "name": "kevin_dragonfly",
+    "position": "fw",
     "affinity": "wood",
-    "gender": "male",
-    "sprite": "sprites/characters/byron_love.png"
+    "gender": "male"
   },
   {
-    "id": 7,
-    "name": "Samguk Han",
-    "position": "GK",
-    "affinity": "fire",
-    "gender": "male",
-    "sprite": "sprites/characters/samguk_han.png"
+    "name": "mark_evans",
+    "position": "gk",
+    "affinity": "earth",
+    "gender": "male"
   },
   {
-    "id": 8,
-    "name": "Xavier Foster",
-    "position": "FW",
+    "name": "nathan_swift",
+    "position": "df",
+    "affinity": "wind",
+    "gender": "male"
+  },
+  {
+    "name": "riccardo_di_rigo",
+    "position": "mf",
+    "affinity": "wood",
+    "gender": "male"
+  },
+  {
+    "name": "samguk_han",
+    "position": "gk",
     "affinity": "fire",
-    "gender": "male",
-    "sprite": "sprites/characters/xavier_foster.png"
+    "gender": "male"
+  },
+  {
+    "name": "scotty_banyan",
+    "position": "df",
+    "affinity": "wood",
+    "gender": "male"
+  },
+  {
+    "name": "suzette_hartland",
+    "position": "fw",
+    "affinity": "wood",
+    "gender": "female"
+  },
+  {
+    "name": "tezcat",
+    "position": "fw",
+    "affinity": "wood",
+    "gender": "male"
+  },
+  {
+    "name": "victor_blade",
+    "position": "fw",
+    "affinity": "fire",
+    "gender": "male"
+  },
+  {
+    "name": "victoria_vanguard",
+    "position": "mf",
+    "affinity": "wind",
+    "gender": "female"
+  },
+  {
+    "name": "xavier_foster",
+    "position": "fw",
+    "affinity": "fire",
+    "gender": "male"
+  },
+  {
+    "name": "zanark_avalonic",
+    "position": "fw",
+    "affinity": "earth",
+    "gender": "male"
   }
 ]
