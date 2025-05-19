@@ -3,8 +3,8 @@
     "id": 1,
     "nombre": "Mark Evans",
     "posicion": "GK",
-    "afinidad": "Fuego",
-    "rol": "Capitán",
+    "afinidad": "Montaña",
+    "rol": "Portero",
     "sprite": "sprites/personajes/mark_evans.png"
   },
   {
