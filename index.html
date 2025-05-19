@@ -3,58 +3,75 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Inazuma Eleven Team Builder</title>
+  <title>Inazuma Eleven - Team Builder</title>
   <style>
     body {
-      font-family: sans-serif;
-      background-color: #f0f0f0;
-      padding: 20px;
-    }
-    h1 {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
       text-align: center;
+      margin: 0;
+      padding: 1rem;
     }
+
+    h1 {
+      margin-bottom: 1rem;
+    }
+
     .filters {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      margin-bottom: 20px;
+      margin-bottom: 2rem;
     }
-    .filters select {
-      padding: 5px 10px;
+
+    select {
+      margin: 0 0.5rem;
+      padding: 0.4rem;
+      font-size: 1rem;
     }
-    .character-list {
+
+    .character-grid {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 20px;
+      gap: 1.5rem;
     }
+
     .character-card {
       background: white;
-      padding: 10px;
-      border-radius: 10px;
-      width: 150px;
-      text-align: center;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 1rem;
+      width: 140px;
+      transition: transform 0.2s;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
     }
+
+    .character-card:hover {
+      transform: scale(1.05);
+    }
+
     .character-card img {
       width: 100px;
       height: 100px;
       object-fit: contain;
+      image-rendering: pixelated;
     }
-    .attribute-icons {
+
+    .icon-row {
       display: flex;
       justify-content: center;
-      gap: 5px;
-      margin-top: 5px;
+      gap: 0.3rem;
+      margin-top: 0.5rem;
     }
-    .attribute-icons img {
-      width: 20px;
-      height: 20px;
+
+    .icon-row img {
+      width: 24px;
+      height: 24px;
     }
   </style>
 </head>
 <body>
-  <h1>Inazuma Eleven: Victory Road — Team Viewer</h1>
+  <h1>Inazuma Eleven - Team Builder</h1>
 
   <div class="filters">
     <select id="positionFilter">
@@ -80,8 +97,8 @@
     </select>
   </div>
 
-  <div class="character-list" id="characterList"></div>
+  <div class="character-grid" id="characterGrid"></div>
 
-  <script src="js/main.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
