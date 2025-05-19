@@ -1,18 +1,18 @@
 [
   {
     "id": 1,
-    "nombre": "Mark Evans",
-    "posicion": "GK",
-    "genero": "Male",
-    "afinidad": "Montaña",
-    "sprite": "sprites/personajes/mark_evans.png"
+    "name": "Mark Evans",
+    "position": "GK",
+    "gender": "Male",
+    "affinity": "earth",
+    "sprite": "sprites/characters/mark_evans.png"
   },
   {
     "id": 2,
-    "nombre": "Axel Blaze",
-    "posicion": "FW",
-    "genero": "Male",
-    "afinidad": "Fuego",
-    "sprite": "sprites/personajes/axel_blaze.png"
+    "name": "Axel Blaze",
+    "position": "FW",
+    "gender": "Male",
+    "affinity": "fire",
+    "sprite": "sprites/characters/axel_blaze.png"
   }
 ]
