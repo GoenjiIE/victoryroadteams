@@ -11,6 +11,10 @@ function createCharacterCard(character) {
   const sprite = document.createElement("img");
   sprite.src = `sprites/characters/${character.name}.png`;
   sprite.alt = character.name;
+  sprite.style.cursor = "pointer";
+  sprite.onclick = () => {
+    window.location.href = `character.html?name=${character.name}`;
+  };
   card.appendChild(sprite);
 
   const name = document.createElement("div");
