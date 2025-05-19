@@ -6,7 +6,7 @@ fetch("data/characters.json")
     personajes.forEach(personaje => {
       const card = document.createElement("div");
       card.classList.add("personaje-card");
-      card.setAttribute("data-posicion", personaje.posicion);
+      card.setAttribute("data-posicion", personaje.posicion.toUpperCase());
 
       const img = document.createElement("img");
       img.src = personaje.sprite;
@@ -32,12 +32,24 @@ fetch("data/characters.json")
 
       container.appendChild(card);
     });
+
+    aplicarFiltro(); // Inicializa el filtro después de cargar
   });
 
 // Filtro por posición
-document.getElementById("filtro-posicion").addEventListener("change", () => {
-  const seleccion = document.getElementById("filtro-posicion").value;
+document.getElementById("filtro-posicion").addEventListener("change", aplicarFiltro);
+
+function aplicarFiltro() {
+  const seleccion = document.getElementById("filtro-posicion").value.toUpperCase();
   const cards = document.querySelectorAll(".personaje-card");
 
   cards.forEach(card => {
-    const posicion = card.getAttr
+    const posicion = card.getAttribute("data-posicion").toUpperCase().trim();
+
+    if (seleccion === "TODOS" || posicion === seleccion) {
+      card.style.display = "block";
+    } else {
+      card.style.display = "none";
+    }
+  });
+}
