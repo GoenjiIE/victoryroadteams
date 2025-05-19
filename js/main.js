@@ -7,11 +7,12 @@ fetch("data/characters.json")
       const card = document.createElement("div");
       card.classList.add("personaje-card");
       card.setAttribute("data-posicion", personaje.posicion.toUpperCase());
-      card.setAttribute("data-genero", personaje.genero);
+      card.setAttribute("data-genero", personaje.genero.toLowerCase());
 
       const img = document.createElement("img");
       img.src = personaje.sprite;
       img.alt = personaje.nombre;
+      img.classList.add("sprite");
 
       const nombre = document.createElement("h3");
       nombre.textContent = personaje.nombre;
@@ -62,8 +63,8 @@ function aplicarFiltros() {
   const cards = document.querySelectorAll(".personaje-card");
 
   cards.forEach(card => {
-    const pos = card.getAttribute("data-posicion").toUpperCase();
-    const gen = card.getAttribute("data-genero").toLowerCase();
+    const pos = card.getAttribute("data-posicion");
+    const gen = card.getAttribute("data-genero");
 
     const coincidePos = filtroPos === "TODOS" || pos === filtroPos;
     const coincideGen = filtroGen === "todos" || gen === filtroGen;
