@@ -3,16 +3,16 @@
     "id": 1,
     "nombre": "Mark Evans",
     "posicion": "GK",
+    "genero": "Male",
     "afinidad": "Montaña",
-    "rol": "Portero",
     "sprite": "sprites/personajes/mark_evans.png"
   },
   {
     "id": 2,
     "nombre": "Axel Blaze",
     "posicion": "FW",
+    "genero": "Male",
     "afinidad": "Fuego",
-    "rol": "Delantero estrella",
     "sprite": "sprites/personajes/axel_blaze.png"
   }
 ]
