@@ -42,7 +42,7 @@
       text-align: center;
     }
 
-    .personaje-card img {
+    .personaje-card img.sprite {
       width: 100px;
       height: auto;
     }
@@ -51,13 +51,9 @@
       margin: 10px 0 5px;
     }
 
-    .personaje-card p {
-      margin: 4px 0;
-    }
-
-    .afinidad-icon {
-      width: 40px;
-      margin-top: 5px;
+    .icono {
+      width: 30px;
+      margin: 4px;
     }
   </style>
 </head>
@@ -79,9 +75,9 @@
     <label>
       Género:
       <select id="filtro-genero">
-        <option value="TODOS">Todos</option>
-        <option value="Male">Masculino</option>
-        <option value="Female">Femenino</option>
+        <option value="todos">Todos</option>
+        <option value="male">Masculino</option>
+        <option value="female">Femenino</option>
       </select>
     </label>
   </div>
