@@ -2,90 +2,71 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Inazuma Eleven - Team Builder</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inazuma Eleven Team Builder</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: sans-serif;
       background-color: #f0f0f0;
-      margin: 0;
       padding: 20px;
     }
-
     h1 {
       text-align: center;
-      margin-bottom: 20px;
     }
-
-    #filters {
+    .filters {
       display: flex;
+      gap: 20px;
       justify-content: center;
-      gap: 10px;
       margin-bottom: 20px;
     }
-
-    #filters select {
+    .filters select {
       padding: 5px 10px;
-      font-size: 16px;
     }
-
-    #characters-container {
+    .character-list {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 15px;
+      gap: 20px;
     }
-
     .character-card {
-      background-color: white;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      width: 180px;
+      background: white;
       padding: 10px;
-      text-align: center;
-    }
-
-    .character-card img.sprite {
+      border-radius: 10px;
       width: 150px;
-      height: 150px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+    .character-card img {
+      width: 100px;
+      height: 100px;
       object-fit: contain;
     }
-
-    .icons {
-      margin-top: 8px;
+    .attribute-icons {
       display: flex;
       justify-content: center;
-      gap: 8px;
-      align-items: center;
+      gap: 5px;
+      margin-top: 5px;
     }
-
-    .icons img {
-      width: 32px;
-      height: 32px;
-      object-fit: contain;
-    }
-
-    .character-card .name {
-      font-weight: bold;
-      margin-top: 10px;
-      font-size: 18px;
+    .attribute-icons img {
+      width: 20px;
+      height: 20px;
     }
   </style>
 </head>
 <body>
-  <h1>Inazuma Eleven - Team Builder</h1>
+  <h1>Inazuma Eleven: Victory Road — Team Viewer</h1>
 
-  <div id="filters">
+  <div class="filters">
     <select id="positionFilter">
-      <option value="all">All Positions</option>
+      <option value="">All Positions</option>
       <option value="gk">Goalkeeper</option>
-      <option value="df">Defense</option>
-      <option value="mf">Midfield</option>
+      <option value="df">Defender</option>
+      <option value="mf">Midfielder</option>
       <option value="fw">Forward</option>
     </select>
 
     <select id="affinityFilter">
-      <option value="all">All Affinities</option>
+      <option value="">All Affinities</option>
       <option value="fire">Fire</option>
       <option value="earth">Earth</option>
       <option value="wind">Wind</option>
@@ -93,131 +74,14 @@
     </select>
 
     <select id="genderFilter">
-      <option value="all">All Genders</option>
+      <option value="">All Genders</option>
       <option value="male">Male</option>
       <option value="female">Female</option>
     </select>
   </div>
 
-  <div id="characters-container"></div>
+  <div class="character-list" id="characterList"></div>
 
-  <script>
-    const characters = [
-      {
-        id: 4,
-        name: "Jack Wallside",
-        position: "df",
-        affinity: "earth",
-        gender: "male",
-        sprite: "sprites/characters/jack_wallside.png"
-      },
-      {
-        id: 2,
-        name: "Axel Blaze",
-        position: "fw",
-        affinity: "fire",
-        gender: "male",
-        sprite: "sprites/characters/axel_blaze.png"
-      },
-      {
-        id: 6,
-        name: "Byron Love",
-        position: "mf",
-        affinity: "wood",
-        gender: "male",
-        sprite: "sprites/characters/byron_love.png"
-      },
-      {
-        id: 5,
-        name: "Erik Eagle",
-        position: "mf",
-        affinity: "wood",
-        gender: "male",
-        sprite: "sprites/characters/erik_eagle.png"
-      },
-      {
-        id: 1,
-        name: "Mark Evans",
-        position: "gk",
-        affinity: "earth",
-        gender: "male",
-        sprite: "sprites/characters/mark_evans.png"
-      },
-      {
-        id: 3,
-        name: "Jude Sharp",
-        position: "mf",
-        affinity: "wind",
-        gender: "male",
-        sprite: "sprites/characters/jude_sharp.png"
-      },
-      {
-        id: 7,
-        name: "Samguk Han",
-        position: "gk",
-        affinity: "fire",
-        gender: "male",
-        sprite: "sprites/characters/samguk_han.png"
-      },
-      {
-        id: 8,
-        name: "Xavier Foster",
-        position: "fw",
-        affinity: "fire",
-        gender: "male",
-        sprite: "sprites/characters/xavier_foster.png"
-      }
-    ].sort((a, b) => a.name.localeCompare(b.name));
-
-    const charactersContainer = document.getElementById("characters-container");
-    const positionFilter = document.getElementById("positionFilter");
-    const affinityFilter = document.getElementById("affinityFilter");
-    const genderFilter = document.getElementById("genderFilter");
-
-    function displayCharacters(charactersList) {
-      charactersContainer.innerHTML = "";
-      if (charactersList.length === 0) {
-        charactersContainer.innerHTML = "<p>No characters found.</p>";
-        return;
-      }
-      charactersList.forEach(character => {
-        const card = document.createElement("div");
-        card.classList.add("character-card");
-
-        card.innerHTML = `
-          <img src="${character.sprite}" alt="${character.name}" class="sprite" />
-          <div class="name">${character.name}</div>
-          <div class="icons">
-            <img src="sprites/positions/${character.position.toLowerCase()}.png" alt="Position Icon" title="Position" />
-            <img src="sprites/affinities/${character.affinity.toLowerCase()}.png" alt="Affinity Icon" title="Affinity" />
-            <img src="sprites/gender/${character.gender.toLowerCase()}.png" alt="Gender Icon" title="Gender" />
-          </div>
-        `;
-
-        charactersContainer.appendChild(card);
-      });
-    }
-
-    function filterCharacters() {
-      const pos = positionFilter.value.toLowerCase();
-      const aff = affinityFilter.value.toLowerCase();
-      const gen = genderFilter.value.toLowerCase();
-
-      const filtered = characters.filter(c => {
-        return (pos === "all" || c.position.toLowerCase() === pos) &&
-               (aff === "all" || c.affinity.toLowerCase() === aff) &&
-               (gen === "all" || c.gender.toLowerCase() === gen);
-      });
-
-      displayCharacters(filtered);
-    }
-
-    positionFilter.addEventListener("change", filterCharacters);
-    affinityFilter.addEventListener("change", filterCharacters);
-    genderFilter.addEventListener("change", filterCharacters);
-
-    // Initial display
-    displayCharacters(characters);
-  </script>
+  <script src="js/main.js"></script>
 </body>
 </html>
