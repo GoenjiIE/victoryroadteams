@@ -49,7 +49,6 @@
       width: 150px;
       height: 150px;
       object-fit: contain;
-      /* smooth scaling */
     }
 
     .icons {
@@ -79,10 +78,10 @@
   <div id="filters">
     <select id="positionFilter">
       <option value="all">All Positions</option>
-      <option value="GK">Goalkeeper</option>
-      <option value="DF">Defense</option>
-      <option value="MF">Midfield</option>
-      <option value="FW">Forward</option>
+      <option value="gk">Goalkeeper</option>
+      <option value="df">Defense</option>
+      <option value="mf">Midfield</option>
+      <option value="fw">Forward</option>
     </select>
 
     <select id="affinityFilter">
@@ -107,7 +106,7 @@
       {
         id: 1,
         name: "Mark Evans",
-        position: "GK",
+        position: "gk",
         affinity: "earth",
         gender: "male",
         sprite: "sprites/characters/mark_evans.png"
@@ -115,7 +114,7 @@
       {
         id: 2,
         name: "Axel Blaze",
-        position: "FW",
+        position: "fw",
         affinity: "fire",
         gender: "male",
         sprite: "sprites/characters/axel_blaze.png"
@@ -123,7 +122,7 @@
       {
         id: 3,
         name: "Jude Sharp",
-        position: "MF",
+        position: "mf",
         affinity: "wind",
         gender: "male",
         sprite: "sprites/characters/jude_sharp.png"
@@ -131,7 +130,7 @@
       {
         id: 4,
         name: "Jack Wallside",
-        position: "DF",
+        position: "df",
         affinity: "earth",
         gender: "male",
         sprite: "sprites/characters/jack_wallside.png"
@@ -139,7 +138,7 @@
       {
         id: 5,
         name: "Erik Eagle",
-        position: "MF",
+        position: "mf",
         affinity: "wood",
         gender: "male",
         sprite: "sprites/characters/erik_eagle.png"
@@ -147,7 +146,7 @@
       {
         id: 6,
         name: "Byron Love",
-        position: "MF",
+        position: "mf",
         affinity: "wood",
         gender: "male",
         sprite: "sprites/characters/byron_love.png"
@@ -155,7 +154,7 @@
       {
         id: 7,
         name: "Samguk Han",
-        position: "GK",
+        position: "gk",
         affinity: "fire",
         gender: "male",
         sprite: "sprites/characters/samguk_han.png"
@@ -163,7 +162,7 @@
       {
         id: 8,
         name: "Xavier Foster",
-        position: "FW",
+        position: "fw",
         affinity: "fire",
         gender: "male",
         sprite: "sprites/characters/xavier_foster.png"
@@ -189,9 +188,9 @@
           <img src="${character.sprite}" alt="${character.name}" class="sprite" />
           <div class="name">${character.name}</div>
           <div class="icons">
-            <img src="sprites/positions/${character.position}.png" alt="Position Icon" title="Position" />
-            <img src="sprites/affinities/${character.affinity}.png" alt="Affinity Icon" title="Affinity" />
-            <img src="sprites/gender/${character.gender}.png" alt="Gender Icon" title="Gender" />
+            <img src="sprites/positions/${character.position.toLowerCase()}.png" alt="Position Icon" title="Position" />
+            <img src="sprites/affinities/${character.affinity.toLowerCase()}.png" alt="Affinity Icon" title="Affinity" />
+            <img src="sprites/gender/${character.gender.toLowerCase()}.png" alt="Gender Icon" title="Gender" />
           </div>
         `;
 
@@ -200,14 +199,14 @@
     }
 
     function filterCharacters() {
-      const pos = positionFilter.value;
-      const aff = affinityFilter.value;
-      const gen = genderFilter.value;
+      const pos = positionFilter.value.toLowerCase();
+      const aff = affinityFilter.value.toLowerCase();
+      const gen = genderFilter.value.toLowerCase();
 
       const filtered = characters.filter(c => {
-        return (pos === "all" || c.position === pos) &&
-               (aff === "all" || c.affinity === aff) &&
-               (gen === "all" || c.gender === gen);
+        return (pos === "all" || c.position.toLowerCase() === pos) &&
+               (aff === "all" || c.affinity.toLowerCase() === aff) &&
+               (gen === "all" || c.gender.toLowerCase() === gen);
       });
 
       displayCharacters(filtered);
