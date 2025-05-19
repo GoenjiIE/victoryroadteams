@@ -3,16 +3,64 @@
     "id": 1,
     "name": "Mark Evans",
     "position": "GK",
-    "gender": "Male",
     "affinity": "earth",
+    "gender": "male",
     "sprite": "sprites/characters/mark_evans.png"
   },
   {
     "id": 2,
     "name": "Axel Blaze",
     "position": "FW",
-    "gender": "Male",
     "affinity": "fire",
+    "gender": "male",
     "sprite": "sprites/characters/axel_blaze.png"
+  },
+  {
+    "id": 3,
+    "name": "Jude Sharp",
+    "position": "MF",
+    "affinity": "wind",
+    "gender": "male",
+    "sprite": "sprites/characters/jude_sharp.png"
+  },
+  {
+    "id": 4,
+    "name": "Jack Wallside",
+    "position": "DF",
+    "affinity": "earth",
+    "gender": "male",
+    "sprite": "sprites/characters/jack_wallside.png"
+  },
+  {
+    "id": 5,
+    "name": "Erik Eagle",
+    "position": "MF",
+    "affinity": "wood",
+    "gender": "male",
+    "sprite": "sprites/characters/erik_eagle.png"
+  },
+  {
+    "id": 6,
+    "name": "Byron Love",
+    "position": "MF",
+    "affinity": "wood",
+    "gender": "male",
+    "sprite": "sprites/characters/byron_love.png"
+  },
+  {
+    "id": 7,
+    "name": "Samguk Han",
+    "position": "GK",
+    "affinity": "fire",
+    "gender": "male",
+    "sprite": "sprites/characters/samguk_han.png"
+  },
+  {
+    "id": 8,
+    "name": "Xavier Foster",
+    "position": "FW",
+    "affinity": "fire",
+    "gender": "male",
+    "sprite": "sprites/characters/xavier_foster.png"
   }
 ]
