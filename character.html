@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Character Detail</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #fafafa;
+      text-align: center;
+      padding: 20px;
+    }
+    .character-container {
+      display: inline-block;
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    img {
+      width: 150px;
+      height: 150px;
+      object-fit: contain;
+    }
+    .attribute-icons {
+      margin-top: 10px;
+    }
+    .attribute-icons img {
+      width: 30px;
+      height: 30px;
+      margin: 0 5px;
+    }
+    .description {
+      margin-top: 20px;
+      font-size: 16px;
+      color: #333;
+    }
+    a {
+      display: block;
+      margin-top: 30px;
+      color: #007BFF;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="character-container" id="characterContainer">
+    <h1 id="charName">Loading...</h1>
+    <img id="charImage" src="" alt="">
+    <div class="attribute-icons">
+      <img id="positionIcon" src="" alt="">
+      <img id="affinityIcon" src="" alt="">
+      <img id="genderIcon" src="" alt="">
+    </div>
+    <div class="description" id="charDescription"></div>
+  </div>
+  <a href="index.html">← Back to List</a>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const characterName = urlParams.get("name");
+
+    async function loadCharacterData() {
+      const response = await fetch("data/characters.json");
+      const characters = await response.json();
+      const character = characters.find(c => c.name === characterName);
+
+      if (!character) {
+        document.getElementById("charName").textContent = "Character not found";
+        return;
+      }
+
+      const nameDisplay = character.name.replace(/_/g, " ");
+      document.getElementById("charName").textContent = nameDisplay;
+      document.getElementById("charImage").src = `sprites/characters/${character.name}.png`;
+      document.getElementById("charImage").alt = nameDisplay;
+      document.getElementById("positionIcon").src = `sprites/positions/${character.position}.png`;
+      document.getElementById("affinityIcon").src = `sprites/affinities/${character.affinity}.png`;
+      document.getElementById("genderIcon").src = `sprites/gender/${character.gender}.png`;
+
+      // Descripción solo para bai_long por ahora
+      const descriptions = {
+        "bai_long": "Un chico joven con una confianza absoluta en su propia habilidad. Alberga una rivalidad con Victor."
+      };
+
+      const description = descriptions[character.name] || "No additional information available.";
+      document.getElementById("charDescription").textContent = description;
+    }
+
+    loadCharacterData();
+  </script>
+</body>
+</html>
