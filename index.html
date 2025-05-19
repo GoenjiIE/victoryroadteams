@@ -3,98 +3,212 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Inazuma Eleven: Victory Road — Team Builder</title>
+  <title>Inazuma Eleven - Team Builder</title>
   <style>
     body {
       font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
       padding: 20px;
-      background-color: #f2f2f2;
     }
 
     h1 {
       text-align: center;
+      margin-bottom: 20px;
     }
 
     #filters {
       display: flex;
       justify-content: center;
-      gap: 20px;
+      gap: 10px;
       margin-bottom: 20px;
-      flex-wrap: wrap;
     }
 
-    select {
-      padding: 6px;
+    #filters select {
+      padding: 5px 10px;
       font-size: 16px;
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
+    #characters-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
     }
 
     .character-card {
       background-color: white;
-      border-radius: 12px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      width: 180px;
       padding: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       text-align: center;
     }
 
     .character-card img.sprite {
       width: 100px;
-      height: auto;
+      height: 100px;
+      object-fit: contain;
+      image-rendering: pixelated;
     }
 
-    .character-card h3 {
-      margin: 10px 0 5px;
+    .character-card .name {
+      font-weight: bold;
+      margin-top: 10px;
+      font-size: 18px;
     }
 
-    .icon {
-      width: 30px;
-      margin: 4px;
+    .character-card .info {
+      margin-top: 5px;
+      font-size: 14px;
+      color: #555;
     }
   </style>
 </head>
 <body>
-  <h1>Inazuma Eleven: Victory Road — Team Builder</h1>
+  <h1>Inazuma Eleven - Team Builder</h1>
 
   <div id="filters">
-    <label>
-      Position:
-      <select id="filter-position">
-        <option value="ALL">All</option>
-        <option value="GK">Goalkeeper (GK)</option>
-        <option value="DF">Defense (DF)</option>
-        <option value="MF">Midfield (MF)</option>
-        <option value="FW">Forward (FW)</option>
-      </select>
-    </label>
+    <select id="positionFilter">
+      <option value="all">All Positions</option>
+      <option value="GK">Goalkeeper</option>
+      <option value="DF">Defense</option>
+      <option value="MF">Midfield</option>
+      <option value="FW">Forward</option>
+    </select>
 
-    <label>
-      Gender:
-      <select id="filter-gender">
-        <option value="all">All</option>
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-      </select>
-    </label>
+    <select id="affinityFilter">
+      <option value="all">All Affinities</option>
+      <option value="fire">Fire</option>
+      <option value="earth">Earth</option>
+      <option value="wind">Wind</option>
+      <option value="wood">Wood</option>
+    </select>
 
-    <label>
-      Affinity:
-      <select id="filter-affinity">
-        <option value="all">All</option>
-        <option value="fire">Fire</option>
-        <option value="earth">Earth</option>
-        <option value="wind">Wind</option>
-        <option value="wood">Wood</option>
-      </select>
-    </label>
+    <select id="genderFilter">
+      <option value="all">All Genders</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+    </select>
   </div>
 
-  <div class="grid" id="characters-container"></div>
+  <div id="characters-container"></div>
 
-  <script src="js/main.js"></script>
+  <script>
+    const characters = [
+      {
+        id: 1,
+        name: "Mark Evans",
+        position: "GK",
+        affinity: "earth",
+        gender: "male",
+        sprite: "sprites/characters/mark_evans.png"
+      },
+      {
+        id: 2,
+        name: "Axel Blaze",
+        position: "FW",
+        affinity: "fire",
+        gender: "male",
+        sprite: "sprites/characters/axel_blaze.png"
+      },
+      {
+        id: 3,
+        name: "Jude Sharp",
+        position: "MF",
+        affinity: "wind",
+        gender: "male",
+        sprite: "sprites/characters/jude_sharp.png"
+      },
+      {
+        id: 4,
+        name: "Jack Wallside",
+        position: "DF",
+        affinity: "earth",
+        gender: "male",
+        sprite: "sprites/characters/jack_wallside.png"
+      },
+      {
+        id: 5,
+        name: "Erik Eagle",
+        position: "MF",
+        affinity: "wood",
+        gender: "male",
+        sprite: "sprites/characters/erik_eagle.png"
+      },
+      {
+        id: 6,
+        name: "Byron Love",
+        position: "MF",
+        affinity: "wood",
+        gender: "male",
+        sprite: "sprites/characters/byron_love.png"
+      },
+      {
+        id: 7,
+        name: "Samguk Han",
+        position: "GK",
+        affinity: "fire",
+        gender: "male",
+        sprite: "sprites/characters/samguk_han.png"
+      },
+      {
+        id: 8,
+        name: "Xavier Foster",
+        position: "FW",
+        affinity: "fire",
+        gender: "male",
+        sprite: "sprites/characters/xavier_foster.png"
+      }
+    ];
+
+    const charactersContainer = document.getElementById("characters-container");
+    const positionFilter = document.getElementById("positionFilter");
+    const affinityFilter = document.getElementById("affinityFilter");
+    const genderFilter = document.getElementById("genderFilter");
+
+    function displayCharacters(charactersList) {
+      charactersContainer.innerHTML = "";
+      if (charactersList.length === 0) {
+        charactersContainer.innerHTML = "<p>No characters found.</p>";
+        return;
+      }
+      charactersList.forEach(character => {
+        const card = document.createElement("div");
+        card.classList.add("character-card");
+
+        card.innerHTML = `
+          <img src="${character.sprite}" alt="${character.name}" class="sprite" />
+          <div class="name">${character.name}</div>
+          <div class="info">Position: ${character.position}</div>
+          <div class="info">Affinity: ${character.affinity}</div>
+          <div class="info">Gender: ${character.gender}</div>
+        `;
+
+        charactersContainer.appendChild(card);
+      });
+    }
+
+    function filterCharacters() {
+      const pos = positionFilter.value;
+      const aff = affinityFilter.value;
+      const gen = genderFilter.value;
+
+      const filtered = characters.filter(c => {
+        return (pos === "all" || c.position === pos) &&
+               (aff === "all" || c.affinity === aff) &&
+               (gen === "all" || c.gender === gen);
+      });
+
+      displayCharacters(filtered);
+    }
+
+    positionFilter.addEventListener("change", filterCharacters);
+    affinityFilter.addEventListener("change", filterCharacters);
+    genderFilter.addEventListener("change", filterCharacters);
+
+    // Initial display
+    displayCharacters(characters);
+  </script>
 </body>
 </html>
