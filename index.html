@@ -104,12 +104,12 @@
   <script>
     const characters = [
       {
-        id: 1,
-        name: "Mark Evans",
-        position: "gk",
+        id: 4,
+        name: "Jack Wallside",
+        position: "df",
         affinity: "earth",
         gender: "male",
-        sprite: "sprites/characters/mark_evans.png"
+        sprite: "sprites/characters/jack_wallside.png"
       },
       {
         id: 2,
@@ -120,20 +120,12 @@
         sprite: "sprites/characters/axel_blaze.png"
       },
       {
-        id: 3,
-        name: "Jude Sharp",
+        id: 6,
+        name: "Byron Love",
         position: "mf",
-        affinity: "wind",
+        affinity: "wood",
         gender: "male",
-        sprite: "sprites/characters/jude_sharp.png"
-      },
-      {
-        id: 4,
-        name: "Jack Wallside",
-        position: "df",
-        affinity: "earth",
-        gender: "male",
-        sprite: "sprites/characters/jack_wallside.png"
+        sprite: "sprites/characters/byron_love.png"
       },
       {
         id: 5,
@@ -144,12 +136,20 @@
         sprite: "sprites/characters/erik_eagle.png"
       },
       {
-        id: 6,
-        name: "Byron Love",
-        position: "mf",
-        affinity: "wood",
+        id: 1,
+        name: "Mark Evans",
+        position: "gk",
+        affinity: "earth",
         gender: "male",
-        sprite: "sprites/characters/byron_love.png"
+        sprite: "sprites/characters/mark_evans.png"
+      },
+      {
+        id: 3,
+        name: "Jude Sharp",
+        position: "mf",
+        affinity: "wind",
+        gender: "male",
+        sprite: "sprites/characters/jude_sharp.png"
       },
       {
         id: 7,
@@ -167,7 +167,7 @@
         gender: "male",
         sprite: "sprites/characters/xavier_foster.png"
       }
-    ];
+    ].sort((a, b) => a.name.localeCompare(b.name));
 
     const charactersContainer = document.getElementById("characters-container");
     const positionFilter = document.getElementById("positionFilter");
