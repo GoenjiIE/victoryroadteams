@@ -1,32 +1,18 @@
 [
   {
     "id": 1,
-    "name": "Mark Evans",
-    "position": "Portero",
-    "affinity": "Fuego",
-    "role": "Defensivo",
-    "sprite": "sprites/personajes/mark_evans.png",
-    "stats": {
-      "TP": 90,
-      "Kick": 45,
-      "Catch": 95
-    },
-    "skills": ["God Hand", "Majin The Hand"],
-    "items": ["Guantes de Fuego"]
+    "nombre": "Mark Evans",
+    "posicion": "GK",
+    "afinidad": "Fuego",
+    "rol": "Capitán",
+    "sprite": "sprites/personajes/mark_evans.png"
   },
   {
     "id": 2,
-    "name": "Axel Blaze",
-    "position": "Delantero",
-    "affinity": "Fuego",
-    "role": "Ofensivo",
-    "sprite": "sprites/personajes/axel_blaze.png",
-    "stats": {
-      "TP": 80,
-      "Kick": 99,
-      "Catch": 30
-    },
-    "skills": ["Fire Tornado", "Dragon Crash"],
-    "items": ["Botas de Velocidad"]
+    "nombre": "Axel Blaze",
+    "posicion": "FW",
+    "afinidad": "Fuego",
+    "rol": "Delantero estrella",
+    "sprite": "sprites/personajes/axel_blaze.png"
   }
 ]
