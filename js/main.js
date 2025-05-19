@@ -16,25 +16,40 @@ fetch("data/characters.json")
       const nombre = document.createElement("h3");
       nombre.textContent = personaje.nombre;
 
-      const posicion = document.createElement("p");
-      posicion.textContent = `Posición: ${personaje.posicion}`;
-
+      // AFINIDAD → sprite
       const afinidadImg = document.createElement("img");
       const afinidadLower = personaje.afinidad.toLowerCase();
       afinidadImg.src = `sprites/afinidades/${afinidadLower}.png`;
       afinidadImg.alt = personaje.afinidad;
-      afinidadImg.classList.add("afinidad-icon");
+      afinidadImg.classList.add("icono");
       afinidadImg.title = personaje.afinidad;
+
+      // POSICIÓN → sprite
+      const posicionImg = document.createElement("img");
+      const posicionLower = personaje.posicion.toLowerCase();
+      posicionImg.src = `sprites/posiciones/${posicionLower}.png`;
+      posicionImg.alt = personaje.posicion;
+      posicionImg.classList.add("icono");
+      posicionImg.title = personaje.posicion;
+
+      // GÉNERO → sprite
+      const generoImg = document.createElement("img");
+      const generoLower = personaje.genero.toLowerCase();
+      generoImg.src = `sprites/genero/${generoLower}.png`;
+      generoImg.alt = personaje.genero;
+      generoImg.classList.add("icono");
+      generoImg.title = personaje.genero;
 
       card.appendChild(img);
       card.appendChild(nombre);
-      card.appendChild(posicion);
       card.appendChild(afinidadImg);
+      card.appendChild(posicionImg);
+      card.appendChild(generoImg);
 
       container.appendChild(card);
     });
 
-    aplicarFiltros(); // aplicar filtros iniciales
+    aplicarFiltros();
   });
 
 document.getElementById("filtro-posicion").addEventListener("change", aplicarFiltros);
@@ -42,16 +57,16 @@ document.getElementById("filtro-genero").addEventListener("change", aplicarFiltr
 
 function aplicarFiltros() {
   const filtroPos = document.getElementById("filtro-posicion").value.toUpperCase();
-  const filtroGen = document.getElementById("filtro-genero").value;
+  const filtroGen = document.getElementById("filtro-genero").value.toLowerCase();
 
   const cards = document.querySelectorAll(".personaje-card");
 
   cards.forEach(card => {
     const pos = card.getAttribute("data-posicion").toUpperCase();
-    const gen = card.getAttribute("data-genero");
+    const gen = card.getAttribute("data-genero").toLowerCase();
 
     const coincidePos = filtroPos === "TODOS" || pos === filtroPos;
-    const coincideGen = filtroGen === "TODOS" || gen === filtroGen;
+    const coincideGen = filtroGen === "todos" || gen === filtroGen;
 
     card.style.display = (coincidePos && coincideGen) ? "block" : "none";
   });
