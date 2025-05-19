@@ -49,19 +49,27 @@
       width: 150px;
       height: 150px;
       object-fit: contain;
-      /* removed image-rendering pixelated for smoother scaling */
+      /* smooth scaling */
+    }
+
+    .icons {
+      margin-top: 8px;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .icons img {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
     }
 
     .character-card .name {
       font-weight: bold;
       margin-top: 10px;
       font-size: 18px;
-    }
-
-    .character-card .info {
-      margin-top: 5px;
-      font-size: 14px;
-      color: #555;
     }
   </style>
 </head>
@@ -180,9 +188,11 @@
         card.innerHTML = `
           <img src="${character.sprite}" alt="${character.name}" class="sprite" />
           <div class="name">${character.name}</div>
-          <div class="info">Position: ${character.position}</div>
-          <div class="info">Affinity: ${character.affinity}</div>
-          <div class="info">Gender: ${character.gender}</div>
+          <div class="icons">
+            <img src="sprites/positions/${character.position}.png" alt="Position Icon" title="Position" />
+            <img src="sprites/affinities/${character.affinity}.png" alt="Affinity Icon" title="Affinity" />
+            <img src="sprites/gender/${character.gender}.png" alt="Gender Icon" title="Gender" />
+          </div>
         `;
 
         charactersContainer.appendChild(card);
