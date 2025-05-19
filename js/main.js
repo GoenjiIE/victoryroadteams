@@ -1,76 +1,74 @@
-fetch("data/characters.json")
-  .then(response => response.json())
-  .then(characters => {
-    const container = document.getElementById("characters-container");
+async function loadCharacters() {
+  const response = await fetch("data/characters.json");
+  const data = await response.json();
+  return data;
+}
 
-    characters.forEach(character => {
-      const card = document.createElement("div");
-      card.classList.add("character-card");
-      card.setAttribute("data-position", character.position.toUpperCase());
-      card.setAttribute("data-gender", character.gender.toLowerCase());
-      card.setAttribute("data-affinity", character.affinity.toLowerCase());
+function createCharacterCard(character) {
+  const card = document.createElement("div");
+  card.className = "character-card";
 
-      const img = document.createElement("img");
-      img.src = character.sprite;
-      img.alt = character.name;
-      img.classList.add("sprite");
+  const sprite = document.createElement("img");
+  sprite.src = `sprites/characters/${character.name}.png`;
+  sprite.alt = character.name;
+  card.appendChild(sprite);
 
-      const name = document.createElement("h3");
-      name.textContent = character.name;
+  const name = document.createElement("div");
+  name.textContent = character.name.replace(/_/g, " ");
+  name.style.marginTop = "10px";
+  card.appendChild(name);
 
-      // Affinity icon
-      const affinityImg = document.createElement("img");
-      affinityImg.src = `sprites/affinities/${character.affinity.toLowerCase()}.png`;
-      affinityImg.alt = character.affinity;
-      affinityImg.classList.add("icon");
-      affinityImg.title = character.affinity;
+  const icons = document.createElement("div");
+  icons.className = "attribute-icons";
 
-      // Position icon
-      const positionImg = document.createElement("img");
-      positionImg.src = `sprites/positions/${character.position.toLowerCase()}.png`;
-      positionImg.alt = character.position;
-      positionImg.classList.add("icon");
-      positionImg.title = character.position;
+  const positionIcon = document.createElement("img");
+  positionIcon.src = `sprites/positions/${character.position}.png`;
+  positionIcon.alt = character.position;
+  icons.appendChild(positionIcon);
 
-      // Gender icon
-      const genderImg = document.createElement("img");
-      genderImg.src = `sprites/gender/${character.gender.toLowerCase()}.png`;
-      genderImg.alt = character.gender;
-      genderImg.classList.add("icon");
-      genderImg.title = character.gender;
+  const affinityIcon = document.createElement("img");
+  affinityIcon.src = `sprites/affinities/${character.affinity}.png`;
+  affinityIcon.alt = character.affinity;
+  icons.appendChild(affinityIcon);
 
-      card.appendChild(img);
-      card.appendChild(name);
-      card.appendChild(affinityImg);
-      card.appendChild(positionImg);
-      card.appendChild(genderImg);
+  const genderIcon = document.createElement("img");
+  genderIcon.src = `sprites/gender/${character.gender}.png`;
+  genderIcon.alt = character.gender;
+  icons.appendChild(genderIcon);
 
-      container.appendChild(card);
-    });
+  card.appendChild(icons);
+  return card;
+}
 
-    applyFilters();
-  });
+function renderCharacters(characters) {
+  const list = document.getElementById("characterList");
+  list.innerHTML = "";
 
-document.getElementById("filter-position").addEventListener("change", applyFilters);
-document.getElementById("filter-gender").addEventListener("change", applyFilters);
-document.getElementById("filter-affinity").addEventListener("change", applyFilters);
-
-function applyFilters() {
-  const filterPos = document.getElementById("filter-position").value.toUpperCase();
-  const filterGen = document.getElementById("filter-gender").value.toLowerCase();
-  const filterAff = document.getElementById("filter-affinity").value.toLowerCase();
-
-  const cards = document.querySelectorAll(".character-card");
-
-  cards.forEach(card => {
-    const pos = card.getAttribute("data-position");
-    const gen = card.getAttribute("data-gender");
-    const aff = card.getAttribute("data-affinity");
-
-    const matchesPos = filterPos === "ALL" || pos === filterPos;
-    const matchesGen = filterGen === "all" || gen === filterGen;
-    const matchesAff = filterAff === "all" || aff === filterAff;
-
-    card.style.display = (matchesPos && matchesGen && matchesAff) ? "block" : "none";
+  characters.forEach(character => {
+    list.appendChild(createCharacterCard(character));
   });
 }
+
+function applyFilters(characters) {
+  const pos = document.getElementById("positionFilter").value;
+  const aff = document.getElementById("affinityFilter").value;
+  const gen = document.getElementById("genderFilter").value;
+
+  return characters.filter(c =>
+    (!pos || c.position === pos) &&
+    (!aff || c.affinity === aff) &&
+    (!gen || c.gender === gen)
+  );
+}
+
+document.addEventListener("DOMContentLoaded", async () => {
+  const allCharacters = await loadCharacters();
+  renderCharacters(allCharacters);
+
+  document.querySelectorAll(".filters select").forEach(select => {
+    select.addEventListener("change", () => {
+      const filtered = applyFilters(allCharacters);
+      renderCharacters(filtered);
+    });
+  });
+});
