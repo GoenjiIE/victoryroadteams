@@ -2,28 +2,72 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Inazuma Eleven Team Builder</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inazuma Eleven: Victory Road — Team Builder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f2f2f2;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    #filtro-container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    #filtro-posicion {
+      padding: 6px;
+      font-size: 16px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .personaje-card {
+      background-color: white;
+      border-radius: 12px;
+      padding: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .personaje-card img {
+      width: 100px;
+      height: auto;
+    }
+
+    .personaje-card h3 {
+      margin: 10px 0 5px;
+    }
+
+    .personaje-card p {
+      margin: 4px 0;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>Inazuma Eleven: Victory Road — Team Builder</h1>
-  </header>
+  <h1>Inazuma Eleven: Victory Road — Team Builder</h1>
 
-  <main>
-    <section id="filters">
-      <!-- Aquí irán los filtros: nombre, posición, afinidad, etc. -->
-    </section>
+  <div id="filtro-container">
+    <label for="filtro-posicion"><strong>Filtrar por posición:</strong></label>
+    <select id="filtro-posicion">
+      <option value="todos">Todos</option>
+      <option value="GK">Portero (GK)</option>
+      <option value="DF">Defensa (DF)</option>
+      <option value="MF">Medio (MF)</option>
+      <option value="FW">Delantero (FW)</option>
+    </select>
+  </div>
 
-    <section id="character-list">
-      <!-- Personajes cargados dinámicamente -->
-    </section>
-
-    <section id="team-builder">
-      <!-- Zona para armar tu equipo -->
-    </section>
-  </main>
+  <div class="grid" id="personajes-container"></div>
 
   <script src="js/main.js"></script>
 </body>
