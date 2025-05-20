@@ -1,40 +1,45 @@
 body {
-  background-color: white;
   font-family: Arial, sans-serif;
-  padding: 20px;
   margin: 0;
+  padding: 0;
+  background: #f9f9f9;
 }
 
-h1 {
+header {
+  background-color: #004080;
+  color: white;
+  padding: 1rem;
   text-align: center;
 }
 
 .filters {
+  margin-top: 1rem;
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin-bottom: 20px;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
-#charactersContainer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
+main {
+  padding: 1rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
 }
 
 .character-card {
-  width: 120px;
-  text-align: center;
+  background: white;
   border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 10px;
-  background-color: #f9f9f9;
+  padding: 0.5rem;
+  text-align: center;
+  border-radius: 8px;
   cursor: pointer;
+  transition: transform 0.2s;
 }
 
-.character-card img {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
+.character-card:hover {
+  transform: scale(1.03);
 }
