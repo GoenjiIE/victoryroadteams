@@ -1,42 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Character Details</title>
-<link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8" />
+  <title>Character Details</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div id="characterDetails"></div>
+  <div id="characterDetails"></div>
 
-<script>
-  // Get character id from URL
-  const params = new URLSearchParams(window.location.search);
-  const charId = params.get('id');
+  <script>
+    async function loadCharacter() {
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get("id");
 
-  fetch('characters.json')
-    .then(response => response.json())
-    .then(data => {
-      const character = data.find(c => c.id === charId);
-      const container = document.getElementById('characterDetails');
+      const response = await fetch("characters.json");
+      const characters = await response.json();
+      const char = characters.find(c => c.id === id);
 
-      if (character) {
-        container.innerHTML = `
-          <h2>${character.name}</h2>
-          <img src="sprites/characters/${character.id}.png" alt="${character.name}" style="width:150px;height:auto;" />
-          <p><strong>Position:</strong> <img src="sprites/positions/${character.position}.png" alt="${character.position}" style="width:30px;height:30px;" /></p>
-          <p><strong>Affinity:</strong> <img src="sprites/affinities/${character.affinity}.png" alt="${character.affinity}" style="width:30px;height:30px;" /></p>
-          <p><strong>Gender:</strong> <img src="sprites/gender/${character.gender}.png" alt="${character.gender}" style="width:30px;height:30px;" /></p>
-          <p><strong>Description:</strong> ${character.description || "No description available."}</p>
-          <a href="index.html">Back to list</a>
-        `;
-      } else {
-        container.textContent = "Character not found.";
+      const container = document.getElementById("characterDetails");
+
+      if (!char) {
+        container.innerHTML = "<p>Character not found.</p>";
+        return;
       }
-    })
-    .catch(() => {
-      document.getElementById('characterDetails').textContent = "Error loading character data.";
-    });
-</script>
+
+      container.innerHTML = `
+        <h1>${char.name}</h1>
+        <img src="sprites/characters/${char.id}.png" alt="${char.name}" />
+        <div>
+          <img src="sprites/positions/${char.position}.png" width="32" />
+          <img src="sprites/affinities/${char.affinity}.png" width="32" />
+          <img src="sprites/gender/${char.gender}.png" width="32" />
+        </div>
+        <p>${char.description || "No additional description available."}</p>
+        <a href="index.html">← Back</a>
+      `;
+    }
+
+    loadCharacter();
+  </script>
 </body>
 </html>
