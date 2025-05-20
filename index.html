@@ -20,28 +20,48 @@
       gap: 20px;
       margin-top: 20px;
     }
-    .character-link {
+    .character-card {
       position: relative;
-      display: inline-block;
+      width: 120px;
       cursor: default;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px;
+      background-color: #f9f9f9;
+      transition: box-shadow 0.3s;
     }
-    .character-link img {
+    .character-card:hover {
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+    .character-sprite {
       width: 100px;
       height: 100px;
-      display: block;
       border-radius: 10px;
       border: 1px solid #ccc;
-      background-color: #f9f9f9;
+      background-color: white;
+      margin-bottom: 8px;
       transition: transform 0.2s;
+      object-fit: contain;
     }
-    .character-link:hover img {
+    .character-card:hover .character-sprite {
       transform: scale(1.1);
       border-color: #666;
     }
-    /* Tooltip container */
+    .icons-row {
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+      margin-bottom: 8px;
+    }
+    .icon-img {
+      width: 25px;
+      height: 25px;
+      object-fit: contain;
+    }
+    /* Tooltip */
     .tooltip {
       position: absolute;
-      bottom: 110%; /* Above the image */
+      bottom: 125%;
       left: 50%;
       transform: translateX(-50%);
       background-color: rgba(0,0,0,0.85);
@@ -52,14 +72,13 @@
       text-align: left;
       font-size: 0.9rem;
       line-height: 1.3;
-      pointer-events: none; /* So it doesn't block hover */
+      pointer-events: none;
       opacity: 0;
       visibility: hidden;
       transition: opacity 0.3s;
-      white-space: normal; /* Allow wrapping */
+      white-space: normal;
       z-index: 10;
     }
-    /* Tooltip arrow */
     .tooltip::after {
       content: "";
       position: absolute;
@@ -70,8 +89,7 @@
       border-style: solid;
       border-color: rgba(0,0,0,0.85) transparent transparent transparent;
     }
-    /* Show tooltip on hover */
-    .character-link:hover .tooltip {
+    .character-card:hover .tooltip {
       opacity: 1;
       visibility: visible;
     }
@@ -81,52 +99,70 @@
 
   <h1>Victory Road - Team Builder</h1>
 
-  <div id="characters-container">
-    <!-- Personajes se insertan aquí por JS -->
-  </div>
+  <div id="characters-container"></div>
 
   <script>
-    // Ejemplo simplificado, adapta o carga el JSON completo como necesites
     const characters = [
-      {
-        "id": "mark_evans",
-        "name": "Mark Evans",
-        "description": "Joven cuya pasión por el fútbol es insuperable. Pase lo que pase, su poderoso corazón nunca se rendirá."
-      },
-      {
-        "id": "axel_blaze",
-        "name": "Axel Blaze",
-        "description": "Bajo su fría apariencia, en el interior de este chico arde una intensa pasión por el fútbol."
-      },
-      {
-        "id": "bai_long",
-        "name": "Bai Long",
-        "description": "Un chico joven con una confianza absoluta en su propia habilidad. Alberga una rivalidad con Victor."
-      }
-      // Añade más personajes con descripción aquí o cárgalos dinámicamente desde JSON
+      { id:"mark_evans", name:"Mark Evans", position:"gk", affinity:"earth", gender:"male",
+        description:"Joven cuya pasión por el fútbol es insuperable. Pase lo que pase, su poderoso corazón nunca se rendirá." },
+      { id:"axel_blaze", name:"Axel Blaze", position:"fw", affinity:"fire", gender:"male",
+        description:"Bajo su fría apariencia, en el interior de este chico arde una intensa pasión por el fútbol." },
+      { id:"jude_sharp", name:"Jude Sharp", position:"mf", affinity:"wind", gender:"male",
+        description:"Capitán y excelente jugador que guía a sus compañeros hacia la victoria con su amplio arsenal de tácticas." },
+      { id:"jack_wallside", name:"Jack Wallside", position:"df", affinity:"earth", gender:"male",
+        description:"Con su corpulencia, este joven otorga una defensa al equipo tan sólida como un muro infranqueable." },
+      { id:"erik_eagle", name:"Erik Eagle", position:"mf", affinity:"wood", gender:"male",
+        description:"Un chico al que todo se le da bien y fue proclamado como un genio. Además de buen delantero, también brilla en la defensa." },
+      { id:"byron_love", name:"Byron Love", position:"mf", affinity:"wood", gender:"male",
+        description:"Su destreza artística y su belleza divina cautiva incluso a sus rivales." },
+      { id:"samguk_han", name:"Samguk Han", position:"gk", affinity:"fire", gender:"male",
+        description:"Un portero con reflejos y valentía excepcionales." },
+      { id:"xavier_foster", name:"Xavier Foster", position:"fw", affinity:"fire", gender:"male",
+        description:"Un delantero explosivo con un gran talento para anotar." },
+      { id:"bai_long", name:"Bai Long", position:"fw", affinity:"wind", gender:"male",
+        description:"Un chico joven con una confianza absoluta en su propia habilidad. Alberga una rivalidad con Victor." },
+      { id:"fei_rune", name:"Fei Rune", position:"mf", affinity:"wood", gender:"male",
+        description:"Joven que adora el fútbol. En su mirada arde una pasión inagotable." },
+      { id:"caleb_stonewall", name:"Caleb Stonewall", position:"mf", affinity:"fire", gender:"male",
+        description:"Un centrocampista fuerte y con gran presencia en el campo." },
+      { id:"aitor_cazador", name:"Aitor Cazador", position:"df", affinity:"wood", gender:"male",
+        description:"Un defensa rápido y preciso." },
+      { id:"nathan_swift", name:"Nathan Swift", position:"df", affinity:"wind", gender:"male",
+        description:"Un defensa con gran velocidad y agilidad." },
+      { id:"goldie_lemon", name:"Goldie Lemon", position:"df", affinity:"fire", gender:"female",
+        description:"Una defensa que brilla por su fuerza y determinación." },
+      { id:"gabriel_garcia", name:"Gabriel Garcia", position:"df", affinity:"wood", gender:"male",
+        description:"Un jugador defensivo con gran inteligencia táctica." },
+      { id:"scotty_banyan", name:"Scotty Banyan", position:"df", affinity:"wood", gender:"male",
+        description:"Un defensa fuerte y confiable." },
+      { id:"jordan_greenway", name:"Jordan Greenway", position:"mf", affinity:"wood", gender:"male",
+        description:"Un centrocampista con excelente control del balón." },
+      { id:"heath_moore", name:"Heath Moore", position:"fw", affinity:"fire", gender:"male",
+        description:"Un delantero agresivo y veloz." },
+      { id:"suzette_hartland", name:"Suzette Hartland", position:"fw", affinity:"wood", gender:"female",
+        description:"Una delantera deslumbrante, es el orgullo de Naniwa. Tiene una resolución sin igual." },
+      { id:"riccardo_di_rigo", name:"Riccardo Di Rigo", position:"mf", affinity:"wood", gender:"male",
+        description:"Un centrocampista estratégico y eficaz." },
+      { id:"jean_pierre_lapin", name:"Jean Pierre Lapin", position:"df", affinity:"earth", gender:"male",
+        description:"Un defensa sólido con gran resistencia." },
+      { id:"tezcat", name:"Tezcat", position:"fw", affinity:"wood", gender:"male",
+        description:"Un delantero habilidoso y creativo." },
+      { id:"kevin_dragonfly", name:"Kevin Dragonfly", position:"fw", affinity:"wood", gender:"male",
+        description:"Chico impulsivo que se preocupa mucho por sus compañeros. Puede que su aspecto imponga, pero se esfuerza por mejorar." },
+      { id:"arion_sherwind", name:"Arion Sherwind", position:"mf", affinity:"wind", gender:"male",
+        description:"Un centrocampista con un gran sentido del juego." },
+      { id:"victoria_vanguard", name:"Victoria Vanguard", position:"mf", affinity:"wind", gender:"female",
+        description:"Hija única de Stuart Vanguard. Una jugadora de carácter fuerte y varonil." },
+      { id:"hurley_kane", name:"Hurley Kane", position:"df", affinity:"wind", gender:"male",
+        description:"Un defensa rápido y agresivo." },
+      { id:"victor_blade", name:"Victor Blade", position:"fw", affinity:"fire", gender:"male",
+        description:"Un delantero letal y confiado." },
+      { id:"zanark_avalonic", name:"Zanark Avalonic", position:"fw", affinity:"earth", gender:"male",
+        description:"Un delantero fuerte con un poderoso disparo." }
     ];
 
     const container = document.getElementById("characters-container");
 
     characters.forEach(character => {
-      const link = document.createElement("div");
-      link.classList.add("character-link");
-
-      const img = document.createElement("img");
-      img.src = `sprites/characters/${character.id}.png`;
-      img.alt = character.name;
-      img.title = character.name; // Texto básico al pasar el ratón (mejora accesibilidad)
-
-      // Tooltip que contiene la descripción
-      const tooltip = document.createElement("div");
-      tooltip.classList.add("tooltip");
-      tooltip.textContent = character.description;
-
-      link.appendChild(img);
-      link.appendChild(tooltip);
-      container.appendChild(link);
-    });
-  </script>
-
-</body>
-</html>
+      const card = document.createElement("div");
+      card.classList.add("character
