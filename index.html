@@ -44,9 +44,12 @@
       cursor: pointer;
     }
     .character-card img.character-sprite {
-      width: 100px;
-      height: 100px;
-      object-fit: contain;
+    max-width: 300px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 20px auto;
     }
     .character-name {
       margin-top: 10px;
@@ -120,13 +123,6 @@
             <img src="sprites/positions/${char.position}.png" alt="${char.position}">
             <img src="sprites/affinities/${char.affinity}.png" alt="${char.affinity}">
             <img src="sprites/gender/${char.gender}.png" alt="${char.gender}">
-            .sprite {
-    max-width: 300px;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    display: block;
-    margin: 20px auto;
           </div>
         `;
         container.appendChild(card);
