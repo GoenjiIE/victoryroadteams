@@ -1,45 +1,40 @@
-async function loadCharacters() {
-  const response = await fetch('characters.json');
-  const characters = await response.json();
-  displayCharacters(characters);
+const characterList = document.getElementById("characterList");
+const positionFilter = document.getElementById("positionFilter");
+const affinityFilter = document.getElementById("affinityFilter");
+const genderFilter = document.getElementById("genderFilter");
+
+let characters = [];
+
+function loadCharacters() {
+  fetch('characters.json')
+    .then(res => res.json())
+    .then(data => {
+      characters = data;
+      displayCharacters();
+    });
 }
 
-function displayCharacters(characters) {
-  const container = document.getElementById('charactersContainer');
-  container.innerHTML = '';
+function displayCharacters() {
+  const pos = positionFilter.value;
+  const aff = affinityFilter.value;
+  const gen = genderFilter.value;
 
-  const positionFilter = document.getElementById('positionFilter').value;
-  const affinityFilter = document.getElementById('affinityFilter').value;
-  const genderFilter = document.getElementById('genderFilter').value;
-
-  const filtered = characters
-    .filter(char =>
-      (!positionFilter || char.position === positionFilter) &&
-      (!affinityFilter || char.affinity === affinityFilter) &&
-      (!genderFilter || char.gender === genderFilter)
-    )
-    .sort((a, b) => a.name.localeCompare(b.name));
-
-  filtered.forEach(char => {
-    const card = document.createElement('div');
-    card.className = 'character-card';
-    card.onclick = () => {
-      window.location.href = `character.html?id=${char.id}`;
-    };
-
-    card.innerHTML = `
-      <img src="sprites/characters/${char.id}.png" alt="${char.name}" />
-      <div><img src="sprites/positions/${char.position}.png" alt="${char.position}" width="24"/></div>
-      <div><img src="sprites/affinities/${char.affinity}.png" alt="${char.affinity}" width="24"/></div>
-      <div><img src="sprites/gender/${char.gender}.png" alt="${char.gender}" width="24"/></div>
-    `;
-
-    container.appendChild(card);
+  const filtered = characters.filter(c => {
+    return (!pos || c.position === pos) &&
+           (!aff || c.affinity === aff) &&
+           (!gen || c.gender === gen);
   });
+
+  characterList.innerHTML = filtered.map(c => `
+    <div class="character-card" onclick="location.href='character.html?id=${c.id}'">
+      <img src="sprites/characters/${c.id}.png" alt="${c.name}" width="80" />
+      <p>${c.name}</p>
+    </div>
+  `).join('');
 }
 
-document.getElementById('positionFilter').addEventListener('change', loadCharacters);
-document.getElementById('affinityFilter').addEventListener('change', loadCharacters);
-document.getElementById('genderFilter').addEventListener('change', loadCharacters);
+positionFilter.addEventListener("change", displayCharacters);
+affinityFilter.addEventListener("change", displayCharacters);
+genderFilter.addEventListener("change", displayCharacters);
 
 loadCharacters();
