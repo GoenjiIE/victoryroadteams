@@ -1,164 +1,226 @@
 [
   {
-    "name": "aitor_cazador",
+    "id": "aitor_cazador",
+    "name": "Aitor Cazador",
     "position": "df",
     "affinity": "wood",
-    "gender": "male"
+    "gender": "male",
+    "description": ""
   },
   {
-    "name": "arion_sherwind",
-    "position": "mf",
-    "affinity": "wind",
-    "gender": "male"
-  },
-  {
-    "name": "axel_blaze",
+    "id": "axel_blaze",
+    "name": "Axel Blaze",
     "position": "fw",
     "affinity": "fire",
-    "gender": "male"
+    "gender": "male",
+    "description": "Bajo su fría apariencia, en el interior de este chico arde una intensa pasión por el fútbol."
   },
   {
-    "name": "bai_long",
+    "id": "bai_long",
+    "name": "Bai Long",
     "position": "fw",
     "affinity": "wind",
-    "gender": "male"
+    "gender": "male",
+    "description": "Un chico joven con una confianza absoluta en su propia habilidad. Alberga una rivalidad con Victor."
   },
   {
-    "name": "byron_love",
+    "id": "byron_love",
+    "name": "Byron Love",
     "position": "mf",
     "affinity": "wood",
-    "gender": "male"
+    "gender": "male",
+    "description": "Su destreza artística y su belleza divina cautiva incluso a sus rivales."
   },
   {
-    "name": "caleb_stonewall",
+    "id": "caleb_stonewall",
+    "name": "Caleb Stonewall",
     "position": "mf",
     "affinity": "fire",
-    "gender": "male"
+    "gender": "male",
+    "description": ""
   },
   {
-    "name": "erik_eagle",
+    "id": "erik_eagle",
+    "name": "Erik Eagle",
     "position": "mf",
     "affinity": "wood",
-    "gender": "male"
+    "gender": "male",
+    "description": "Un chico al que todo se le da bien y fue proclamado como un genio. Además de buen delantero, también brilla en la defensa."
   },
   {
-    "name": "gabriel_garcia",
+    "id": "feu_rune",
+    "name": "Fei Rune",
+    "position": "mf",
+    "affinity": "wood",
+    "gender": "male",
+    "description": "Joven que adora el fútbol. En su mirada arde una pasión inagotable."
+  },
+  {
+    "id": "gabriel_garcia",
+    "name": "Gabriel Garcia",
     "position": "df",
     "affinity": "wood",
-    "gender": "male"
+    "gender": "male",
+    "description": ""
   },
   {
-    "name": "goldie_lemon",
+    "id": "goldie_lemon",
+    "name": "Goldie Lemon",
     "position": "df",
     "affinity": "fire",
-    "gender": "female"
+    "gender": "female",
+    "description": ""
   },
   {
-    "name": "heath_moore",
+    "id": "heath_moore",
+    "name": "Heath Moore",
     "position": "fw",
     "affinity": "fire",
-    "gender": "male"
+    "gender": "male",
+    "description": ""
   },
   {
-    "name": "hurley_kane",
+    "id": "hurley_kane",
+    "name": "Hurley Kane",
     "position": "df",
     "affinity": "wind",
-    "gender": "male"
+    "gender": "male",
+    "description": ""
   },
   {
-    "name": "jack_wallside",
+    "id": "jack_wallside",
+    "name": "Jack Wallside",
     "position": "df",
     "affinity": "earth",
-    "gender": "male"
+    "gender": "male",
+    "description": "Con su corpulencia, este joven otorga una defensa al equipo tan sólida como un muro infranqueable."
   },
   {
-    "name": "jean_pierre_lapin",
+    "id": "jean_pierre_lapin",
+    "name": "Jean Pierre Lapin",
     "position": "df",
     "affinity": "earth",
-    "gender": "male"
+    "gender": "male",
+    "description": ""
   },
   {
-    "name": "jordan_greenway",
+    "id": "jordan_greenway",
+    "name": "Jordan Greenway",
     "position": "mf",
     "affinity": "wood",
-    "gender": "male"
+    "gender": "male",
+    "description": ""
   },
   {
-    "name": "jude_sharp",
+    "id": "jude_sharp",
+    "name": "Jude Sharp",
     "position": "mf",
     "affinity": "wind",
-    "gender": "male"
+    "gender": "male",
+    "description": "Capitán y excelente jugador que guía a sus compañeros hacia la victoria con su amplio arsenal de tácticas."
   },
   {
-    "name": "kevin_dragonfly",
+    "id": "kevin_dragonfly",
+    "name": "Kevin Dragonfly",
     "position": "fw",
     "affinity": "wood",
-    "gender": "male"
+    "gender": "male",
+    "description": "Chico impulsivo que se preocupa mucho por sus compañeros. Puede que su aspecto imponga, pero se esfuerza por mejorar."
   },
   {
-    "name": "mark_evans",
+    "id": "mark_evans",
+    "name": "Mark Evans",
     "position": "gk",
     "affinity": "earth",
-    "gender": "male"
+    "gender": "male",
+    "description": "Joven cuya pasión por el fútbol es insuperable. Pase lo que pase, su poderoso corazón nunca se rendirá."
   },
   {
-    "name": "nathan_swift",
+    "id": "nelly_raimon",
+    "name": "Nelly Raimon",
+    "position": "gnt",
+    "affinity": "wood",
+    "gender": "female",
+    "description": ""
+  },
+  {
+    "id": "nathan_swift",
+    "name": "Nathan Swift",
     "position": "df",
     "affinity": "wind",
-    "gender": "male"
+    "gender": "male",
+    "description": ""
   },
   {
-    "name": "riccardo_di_rigo",
+    "id": "riccardo_di_rigo",
+    "name": "Riccardo Di Rigo",
     "position": "mf",
     "affinity": "wood",
-    "gender": "male"
+    "gender": "male",
+    "description": ""
   },
   {
-    "name": "samguk_han",
+    "id": "samguk_han",
+    "name": "Samguk Han",
     "position": "gk",
     "affinity": "fire",
-    "gender": "male"
+    "gender": "male",
+    "description": ""
   },
   {
-    "name": "scotty_banyan",
+    "id": "scotty_banyan",
+    "name": "Scotty Banyan",
     "position": "df",
     "affinity": "wood",
-    "gender": "male"
+    "gender": "male",
+    "description": ""
   },
   {
-    "name": "suzette_hartland",
+    "id": "suzette_hartland",
+    "name": "Suzette Hartland",
     "position": "fw",
     "affinity": "wood",
-    "gender": "female"
+    "gender": "female",
+    "description": "Una delantera deslumbrante, es el orgullo de Naniwa. Tiene una resolución sin igual."
   },
   {
-    "name": "tezcat",
+    "id": "tezcat",
+    "name": "Tezcat",
     "position": "fw",
     "affinity": "wood",
-    "gender": "male"
+    "gender": "male",
+    "description": ""
   },
   {
-    "name": "victor_blade",
+    "id": "victor_blade",
+    "name": "Victor Blade",
     "position": "fw",
     "affinity": "fire",
-    "gender": "male"
+    "gender": "male",
+    "description": ""
   },
   {
-    "name": "victoria_vanguard",
+    "id": "victoria_vanguard",
+    "name": "Victoria Vanguard",
     "position": "mf",
     "affinity": "wind",
-    "gender": "female"
+    "gender": "female",
+    "description": "Hija única de Stuart Vanguard. Una jugadora de carácter fuerte y varonil."
   },
   {
-    "name": "xavier_foster",
+    "id": "xavier_foster",
+    "name": "Xavier Foster",
     "position": "fw",
     "affinity": "fire",
-    "gender": "male"
+    "gender": "male",
+    "description": ""
   },
   {
-    "name": "zanark_avalonic",
+    "id": "zanark_avalonic",
+    "name": "Zanark Avalonic",
     "position": "fw",
     "affinity": "earth",
-    "gender": "male"
+    "gender": "male",
+    "description": ""
   }
 ]
