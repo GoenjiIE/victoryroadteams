@@ -1,78 +1,63 @@
-async function loadCharacters() {
-  const response = await fetch("data/characters.json");
-  const data = await response.json();
-  return data;
-}
+const charactersContainer = document.getElementById('charactersContainer');
+const positionFilter = document.getElementById('positionFilter');
+const affinityFilter = document.getElementById('affinityFilter');
+const genderFilter = document.getElementById('genderFilter');
 
-function createCharacterCard(character) {
-  const card = document.createElement("div");
-  card.className = "character-card";
+let characters = [];
 
-  const sprite = document.createElement("img");
-  sprite.src = `sprites/characters/${character.name}.png`;
-  sprite.alt = character.name;
-  sprite.style.cursor = "pointer";
-  sprite.onclick = () => {
-    window.location.href = `character.html?name=${character.name}`;
-  };
-  card.appendChild(sprite);
-
-  const name = document.createElement("div");
-  name.textContent = character.name.replace(/_/g, " ");
-  name.style.marginTop = "10px";
-  card.appendChild(name);
-
-  const icons = document.createElement("div");
-  icons.className = "attribute-icons";
-
-  const positionIcon = document.createElement("img");
-  positionIcon.src = `sprites/positions/${character.position}.png`;
-  positionIcon.alt = character.position;
-  icons.appendChild(positionIcon);
-
-  const affinityIcon = document.createElement("img");
-  affinityIcon.src = `sprites/affinities/${character.affinity}.png`;
-  affinityIcon.alt = character.affinity;
-  icons.appendChild(affinityIcon);
-
-  const genderIcon = document.createElement("img");
-  genderIcon.src = `sprites/gender/${character.gender}.png`;
-  genderIcon.alt = character.gender;
-  icons.appendChild(genderIcon);
-
-  card.appendChild(icons);
-  return card;
-}
-
-function renderCharacters(characters) {
-  const list = document.getElementById("characterList");
-  list.innerHTML = "";
-
-  characters.forEach(character => {
-    list.appendChild(createCharacterCard(character));
-  });
-}
-
-function applyFilters(characters) {
-  const pos = document.getElementById("positionFilter").value;
-  const aff = document.getElementById("affinityFilter").value;
-  const gen = document.getElementById("genderFilter").value;
-
-  return characters.filter(c =>
-    (!pos || c.position === pos) &&
-    (!aff || c.affinity === aff) &&
-    (!gen || c.gender === gen)
-  );
-}
-
-document.addEventListener("DOMContentLoaded", async () => {
-  const allCharacters = await loadCharacters();
-  renderCharacters(allCharacters);
-
-  document.querySelectorAll(".filters select").forEach(select => {
-    select.addEventListener("change", () => {
-      const filtered = applyFilters(allCharacters);
-      renderCharacters(filtered);
+function loadCharacters() {
+  fetch('characters.json')
+    .then(res => res.json())
+    .then(data => {
+      characters = data;
+      renderCharacters(characters);
+    })
+    .catch(() => {
+      charactersContainer.textContent = "Failed to load characters.";
     });
+}
+
+function renderCharacters(charactersToRender) {
+  charactersContainer.innerHTML = '';
+  if (charactersToRender.length === 0) {
+    charactersContainer.textContent = "No characters match the filter.";
+    return;
+  }
+
+  charactersToRender.forEach(character => {
+    const card = document.createElement('div');
+    card.classList.add('characterCard');
+    card.innerHTML = `
+      <a href="character.html?id=${character.id}">
+        <img src="sprites/characters/${character.id}.png" alt="${character.name}" width="100" height="100" />
+      </a>
+      <p>${character.name}</p>
+      <div class="icons">
+        <img src="sprites/positions/${character.position}.png" alt="${character.position}" title="Position" width="30" height="30" />
+        <img src="sprites/affinities/${character.affinity}.png" alt="${character.affinity}" title="Affinity" width="30" height="30" />
+        <img src="sprites/gender/${character.gender}.png" alt="${character.gender}" title="Gender" width="30" height="30" />
+      </div>
+    `;
+    charactersContainer.appendChild(card);
   });
-});
+}
+
+function applyFilters() {
+  const posVal = positionFilter.value;
+  const affVal = affinityFilter.value;
+  const genVal = genderFilter.value;
+
+  const filtered = characters.filter(char => {
+    return (posVal === '' || char.position === posVal) &&
+           (affVal === '' || char.affinity === affVal) &&
+           (genVal === '' || char.gender === genVal);
+  });
+
+  renderCharacters(filtered);
+}
+
+positionFilter.addEventListener('change', applyFilters);
+affinityFilter.addEventListener('change', applyFilters);
+genderFilter.addEventListener('change', applyFilters);
+
+loadCharacters();
