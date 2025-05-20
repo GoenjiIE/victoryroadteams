@@ -1,23 +1,158 @@
-[
-  {
-    "id": "mark_evans",
-    "name": "Mark Evans",
-    "position": "gk",
-    "affinity": "fire",
+{
+  "aitor_cazador": {
+    "name": "aitor_cazador",
+    "position": "df",
+    "affinity": "wood",
     "gender": "male"
   },
-  {
-    "id": "axel_blaze",
-    "name": "Axel Blaze",
+  "arion_sherwind": {
+    "name": "arion_sherwind",
+    "position": "mf",
+    "affinity": "wind",
+    "gender": "male"
+  },
+  "axel_blaze": {
+    "name": "axel_blaze",
     "position": "fw",
     "affinity": "fire",
     "gender": "male"
   },
-  {
-    "id": "sylvia_woods",
-    "name": "Sylvia Woods",
+  "bai_long": {
+    "name": "bai_long",
+    "position": "fw",
+    "affinity": "wind",
+    "gender": "male"
+  },
+  "byron_love": {
+    "name": "byron_love",
+    "position": "mf",
+    "affinity": "wood",
+    "gender": "male"
+  },
+  "caleb_stonewall": {
+    "name": "caleb_stonewall",
+    "position": "mf",
+    "affinity": "fire",
+    "gender": "male"
+  },
+  "erik_eagle": {
+    "name": "erik_eagle",
+    "position": "mf",
+    "affinity": "wood",
+    "gender": "male"
+  },
+  "fei_rune": {
+    "name": "fei_rune",
+    "position": "mf",
+    "affinity": "wood",
+    "gender": "male"
+  },
+  "gabriel_garcia": {
+    "name": "gabriel_garcia",
+    "position": "df",
+    "affinity": "wood",
+    "gender": "male"
+  },
+  "goldie_lemon": {
+    "name": "goldie_lemon",
+    "position": "df",
+    "affinity": "fire",
+    "gender": "female"
+  },
+  "heath_moore": {
+    "name": "heath_moore",
+    "position": "fw",
+    "affinity": "fire",
+    "gender": "male"
+  },
+  "jack_wallside": {
+    "name": "jack_wallside",
+    "position": "df",
+    "affinity": "earth",
+    "gender": "male"
+  },
+  "jean_pierre_lapin": {
+    "name": "jean_pierre_lapin",
+    "position": "df",
+    "affinity": "earth",
+    "gender": "male"
+  },
+  "jordan_greenway": {
+    "name": "jordan_greenway",
+    "position": "mf",
+    "affinity": "wood",
+    "gender": "male"
+  },
+  "jude_sharp": {
+    "name": "jude_sharp",
+    "position": "mf",
+    "affinity": "wind",
+    "gender": "male"
+  },
+  "kevin_dragonfly": {
+    "name": "kevin_dragonfly",
+    "position": "fw",
+    "affinity": "wood",
+    "gender": "male"
+  },
+  "mark_evans": {
+    "name": "mark_evans",
+    "position": "gk",
+    "affinity": "earth",
+    "gender": "male"
+  },
+  "nathan_swift": {
+    "name": "nathan_swift",
+    "position": "df",
+    "affinity": "wind",
+    "gender": "male"
+  },
+  "riccardo_di_rigo": {
+    "name": "riccardo_di_rigo",
+    "position": "mf",
+    "affinity": "wood",
+    "gender": "male"
+  },
+  "samguk_han": {
+    "name": "samguk_han",
+    "position": "gk",
+    "affinity": "fire",
+    "gender": "male"
+  },
+  "scotty_banyan": {
+    "name": "scotty_banyan",
+    "position": "df",
+    "affinity": "wood",
+    "gender": "male"
+  },
+  "suzette_hartland": {
+    "name": "suzette_hartland",
+    "position": "fw",
+    "affinity": "wood",
+    "gender": "female"
+  },
+  "victor_blade": {
+    "name": "victor_blade",
+    "position": "fw",
+    "affinity": "fire",
+    "gender": "male"
+  },
+  "victoria_vanguard": {
+    "name": "victoria_vanguard",
     "position": "mf",
     "affinity": "wind",
     "gender": "female"
+  },
+  "xavier_foster": {
+    "name": "xavier_foster",
+    "position": "fw",
+    "affinity": "fire",
+    "gender": "male"
+  },
+  "zanark_avalonic": {
+    "name": "zanark_avalonic",
+    "position": "fw",
+    "affinity": "earth",
+    "gender": "male"
   }
-]
+}
