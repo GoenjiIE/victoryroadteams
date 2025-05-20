@@ -3,80 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Inazuma Eleven - Team Builder</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #ffffff;
-      color: #000000;
-      margin: 0;
-      padding: 20px;
-    }
-    h1 {
-      text-align: center;
-    }
-    .filters {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      margin-bottom: 20px;
-    }
-    .filters select {
-      padding: 5px;
-      font-size: 16px;
-    }
-    .characters {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 20px;
-    }
-    .character-card {
-      background: #f2f2f2;
-      border-radius: 10px;
-      padding: 10px;
-      text-align: center;
-      transition: transform 0.2s;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    }
-    .character-card:hover {
-      transform: scale(1.05);
-      cursor: pointer;
-    }
-    .character-card img.character-sprite {
-      width: 100px;
-      height: 100px;
-      object-fit: contain;
-    }
-    .character-name {
-      margin-top: 10px;
-      font-weight: bold;
-      font-size: 16px;
-      text-transform: capitalize;
-    }
-    .icons {
-      margin-top: 8px;
-    }
-    .icons img {
-      width: 24px;
-      height: 24px;
-      margin: 0 4px;
-    }
-  </style>
+  <title>Victory Road Teams</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Inazuma Eleven: Victory Road – Team Builder</h1>
+  <h1>Victory Road Builder</h1>
 
   <div class="filters">
-    <select id="filter-position">
+    <select id="positionFilter">
       <option value="">All Positions</option>
-      <option value="gk">Goalkeeper (GK)</option>
-      <option value="df">Defender (DF)</option>
-      <option value="mf">Midfielder (MF)</option>
-      <option value="fw">Forward (FW)</option>
+      <option value="fw">Forward</option>
+      <option value="mf">Midfielder</option>
+      <option value="df">Defender</option>
+      <option value="gk">Goalkeeper</option>
     </select>
 
-    <select id="filter-affinity">
+    <select id="affinityFilter">
       <option value="">All Affinities</option>
       <option value="fire">Fire</option>
       <option value="earth">Earth</option>
@@ -84,74 +26,15 @@
       <option value="wood">Wood</option>
     </select>
 
-    <select id="filter-gender">
+    <select id="genderFilter">
       <option value="">All Genders</option>
       <option value="male">Male</option>
       <option value="female">Female</option>
     </select>
   </div>
 
-  <div class="characters" id="characters-container"></div>
+  <div id="charactersContainer"></div>
 
-  <script>
-    const container = document.getElementById("characters-container");
-    const filterPosition = document.getElementById("filter-position");
-    const filterAffinity = document.getElementById("filter-affinity");
-    const filterGender = document.getElementById("filter-gender");
-
-    let allCharacters = {};
-
-    function renderCharacters(characters) {
-      container.innerHTML = "";
-      const sortedNames = Object.keys(characters).sort();
-
-      sortedNames.forEach((key) => {
-        const char = characters[key];
-        const card = document.createElement("div");
-        card.className = "character-card";
-        card.onclick = () => {
-          window.location.href = `character.html?name=${char.name}`;
-        };
-
-        card.innerHTML = `
-          <img class="character-sprite" src="sprites/characters/${char.name}.png" alt="${char.name}">
-          <div class="character-name">${char.name.replace(/_/g, " ")}</div>
-          <div class="icons">
-            <img src="sprites/positions/${char.position}.png" alt="${char.position}">
-            <img src="sprites/affinities/${char.affinity}.png" alt="${char.affinity}">
-            <img src="sprites/gender/${char.gender}.png" alt="${char.gender}">
-          </div>
-        `;
-        container.appendChild(card);
-      });
-    }
-
-    function applyFilters() {
-      const pos = filterPosition.value;
-      const aff = filterAffinity.value;
-      const gen = filterGender.value;
-
-      const filtered = {};
-      for (const key in allCharacters) {
-        const c = allCharacters[key];
-        if ((pos && c.position !== pos) || (aff && c.affinity !== aff) || (gen && c.gender !== gen)) {
-          continue;
-        }
-        filtered[key] = c;
-      }
-      renderCharacters(filtered);
-    }
-
-    fetch("data/characters.json")
-      .then((res) => res.json())
-      .then((data) => {
-        allCharacters = data;
-        renderCharacters(allCharacters);
-      });
-
-    filterPosition.addEventListener("change", applyFilters);
-    filterAffinity.addEventListener("change", applyFilters);
-    filterGender.addEventListener("change", applyFilters);
-  </script>
+  <script src="main.js"></script>
 </body>
 </html>
