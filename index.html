@@ -2,156 +2,131 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Inazuma Eleven - Team Builder</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Victory Road - Team Builder</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #ffffff;
-      color: #000000;
+      background-color: #fff;
+      color: #222;
       margin: 0;
       padding: 20px;
-    }
-    h1 {
       text-align: center;
     }
-    .filters {
+    #characters-container {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 20px;
-      margin-bottom: 20px;
+      margin-top: 20px;
     }
-    .filters select {
-      padding: 5px;
-      font-size: 16px;
+    .character-link {
+      position: relative;
+      display: inline-block;
+      cursor: default;
     }
-    .characters {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 20px;
-    }
-    .character-card {
-      background: #f2f2f2;
-      border-radius: 10px;
-      padding: 10px;
-      text-align: center;
-      transition: transform 0.2s;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    }
-    .character-card:hover {
-      transform: scale(1.05);
-      cursor: pointer;
-    }
-    .character-card img.character-sprite {
+    .character-link img {
       width: 100px;
       height: 100px;
-      object-fit: contain;
+      display: block;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      background-color: #f9f9f9;
+      transition: transform 0.2s;
     }
-    .character-name {
-      margin-top: 10px;
-      font-weight: bold;
-      font-size: 16px;
-      text-transform: capitalize;
+    .character-link:hover img {
+      transform: scale(1.1);
+      border-color: #666;
     }
-    .icons {
-      margin-top: 8px;
+    /* Tooltip container */
+    .tooltip {
+      position: absolute;
+      bottom: 110%; /* Above the image */
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(0,0,0,0.85);
+      color: #fff;
+      padding: 10px;
+      border-radius: 6px;
+      width: 220px;
+      text-align: left;
+      font-size: 0.9rem;
+      line-height: 1.3;
+      pointer-events: none; /* So it doesn't block hover */
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s;
+      white-space: normal; /* Allow wrapping */
+      z-index: 10;
     }
-    .icons img {
-      width: 24px;
-      height: 24px;
-      margin: 0 4px;
+    /* Tooltip arrow */
+    .tooltip::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: rgba(0,0,0,0.85) transparent transparent transparent;
+    }
+    /* Show tooltip on hover */
+    .character-link:hover .tooltip {
+      opacity: 1;
+      visibility: visible;
     }
   </style>
 </head>
 <body>
-  <h1>Inazuma Eleven: Victory Road – Team Builder</h1>
 
-  <div class="filters">
-    <select id="filter-position">
-      <option value="">All Positions</option>
-      <option value="gk">Goalkeeper (GK)</option>
-      <option value="df">Defender (DF)</option>
-      <option value="mf">Midfielder (MF)</option>
-      <option value="fw">Forward (FW)</option>
-    </select>
+  <h1>Victory Road - Team Builder</h1>
 
-    <select id="filter-affinity">
-      <option value="">All Affinities</option>
-      <option value="fire">Fire</option>
-      <option value="earth">Earth</option>
-      <option value="wind">Wind</option>
-      <option value="wood">Wood</option>
-    </select>
-
-    <select id="filter-gender">
-      <option value="">All Genders</option>
-      <option value="male">Male</option>
-      <option value="female">Female</option>
-    </select>
+  <div id="characters-container">
+    <!-- Personajes se insertan aquí por JS -->
   </div>
 
-  <div class="characters" id="characters-container"></div>
-
   <script>
-    const container = document.getElementById("characters-container");
-    const filterPosition = document.getElementById("filter-position");
-    const filterAffinity = document.getElementById("filter-affinity");
-    const filterGender = document.getElementById("filter-gender");
-
-    let allCharacters = {};
-
-    function renderCharacters(characters) {
-      container.innerHTML = "";
-      const sortedNames = Object.keys(characters).sort();
-
-      sortedNames.forEach((key) => {
-        const char = characters[key];
-        const card = document.createElement("div");
-        card.className = "character-card";
-        card.onclick = () => {
-          window.location.href = `character.html?name=${char.name}`;
-        };
-
-        card.innerHTML = `
-          <img class="character-sprite" src="sprites/characters/${char.name}.png" alt="${char.name}">
-          <div class="character-name">${char.name.replace(/_/g, " ")}</div>
-          <div class="icons">
-            <img src="sprites/positions/${char.position}.png" alt="${char.position}">
-            <img src="sprites/affinities/${char.affinity}.png" alt="${char.affinity}">
-            <img src="sprites/gender/${char.gender}.png" alt="${char.gender}">
-          </div>
-        `;
-        container.appendChild(card);
-      });
-    }
-
-    function applyFilters() {
-      const pos = filterPosition.value;
-      const aff = filterAffinity.value;
-      const gen = filterGender.value;
-
-      const filtered = {};
-      for (const key in allCharacters) {
-        const c = allCharacters[key];
-        if ((pos && c.position !== pos) || (aff && c.affinity !== aff) || (gen && c.gender !== gen)) {
-          continue;
-        }
-        filtered[key] = c;
+    // Ejemplo simplificado, adapta o carga el JSON completo como necesites
+    const characters = [
+      {
+        "id": "mark_evans",
+        "name": "Mark Evans",
+        "description": "Joven cuya pasión por el fútbol es insuperable. Pase lo que pase, su poderoso corazón nunca se rendirá."
+      },
+      {
+        "id": "axel_blaze",
+        "name": "Axel Blaze",
+        "description": "Bajo su fría apariencia, en el interior de este chico arde una intensa pasión por el fútbol."
+      },
+      {
+        "id": "bai_long",
+        "name": "Bai Long",
+        "description": "Un chico joven con una confianza absoluta en su propia habilidad. Alberga una rivalidad con Victor."
       }
-      renderCharacters(filtered);
-    }
+      // Añade más personajes con descripción aquí o cárgalos dinámicamente desde JSON
+    ];
 
-    fetch("data/characters.json")
-      .then((res) => res.json())
-      .then((data) => {
-        allCharacters = data;
-        renderCharacters(allCharacters);
-      });
+    const container = document.getElementById("characters-container");
 
-    filterPosition.addEventListener("change", applyFilters);
-    filterAffinity.addEventListener("change", applyFilters);
-    filterGender.addEventListener("change", applyFilters);
+    characters.forEach(character => {
+      const link = document.createElement("div");
+      link.classList.add("character-link");
+
+      const img = document.createElement("img");
+      img.src = `sprites/characters/${character.id}.png`;
+      img.alt = character.name;
+      img.title = character.name; // Texto básico al pasar el ratón (mejora accesibilidad)
+
+      // Tooltip que contiene la descripción
+      const tooltip = document.createElement("div");
+      tooltip.classList.add("tooltip");
+      tooltip.textContent = character.description;
+
+      link.appendChild(img);
+      link.appendChild(tooltip);
+      container.appendChild(link);
+    });
   </script>
+
 </body>
 </html>
