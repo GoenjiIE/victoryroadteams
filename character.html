@@ -1,43 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Character Details</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Victory Road - Personajes</title>
+  <link rel="stylesheet" href="styles/style.css" />
 </head>
 <body>
-  <div id="characterDetails"></div>
+  <header>
+    <h1>Inazuma Eleven: Victory Road</h1>
+    <div class="filters">
+      <select id="positionFilter">
+        <option value="">Todas las posiciones</option>
+        <option value="fw">Delantero (FW)</option>
+        <option value="mf">Centrocampista (MF)</option>
+        <option value="df">Defensa (DF)</option>
+        <option value="gk">Portero (GK)</option>
+      </select>
 
-  <script>
-    async function loadCharacter() {
-      const params = new URLSearchParams(window.location.search);
-      const id = params.get("id");
+      <select id="affinityFilter">
+        <option value="">Todas las afinidades</option>
+        <option value="fire">Fuego</option>
+        <option value="earth">Tierra</option>
+        <option value="wind">Viento</option>
+        <option value="wood">Bosque</option>
+      </select>
 
-      const response = await fetch("characters.json");
-      const characters = await response.json();
-      const char = characters.find(c => c.id === id);
+      <select id="genderFilter">
+        <option value="">Todos los géneros</option>
+        <option value="male">Masculino</option>
+        <option value="female">Femenino</option>
+      </select>
+    </div>
+  </header>
 
-      const container = document.getElementById("characterDetails");
+  <main>
+    <div id="characterList" class="grid"></div>
+  </main>
 
-      if (!char) {
-        container.innerHTML = "<p>Character not found.</p>";
-        return;
-      }
-
-      container.innerHTML = `
-        <h1>${char.name}</h1>
-        <img src="sprites/characters/${char.id}.png" alt="${char.name}" />
-        <div>
-          <img src="sprites/positions/${char.position}.png" width="32" />
-          <img src="sprites/affinities/${char.affinity}.png" width="32" />
-          <img src="sprites/gender/${char.gender}.png" width="32" />
-        </div>
-        <p>${char.description || "No additional description available."}</p>
-        <a href="index.html">← Back</a>
-      `;
-    }
-
-    loadCharacter();
-  </script>
+  <script src="main.js"></script>
 </body>
 </html>
