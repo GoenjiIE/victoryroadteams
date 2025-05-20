@@ -1,63 +1,45 @@
-const charactersContainer = document.getElementById('charactersContainer');
-const positionFilter = document.getElementById('positionFilter');
-const affinityFilter = document.getElementById('affinityFilter');
-const genderFilter = document.getElementById('genderFilter');
-
-let characters = [];
-
-function loadCharacters() {
-  fetch('characters.json')
-    .then(res => res.json())
-    .then(data => {
-      characters = data;
-      renderCharacters(characters);
-    })
-    .catch(() => {
-      charactersContainer.textContent = "Failed to load characters.";
-    });
+async function loadCharacters() {
+  const response = await fetch('characters.json');
+  const characters = await response.json();
+  displayCharacters(characters);
 }
 
-function renderCharacters(charactersToRender) {
-  charactersContainer.innerHTML = '';
-  if (charactersToRender.length === 0) {
-    charactersContainer.textContent = "No characters match the filter.";
-    return;
-  }
+function displayCharacters(characters) {
+  const container = document.getElementById('charactersContainer');
+  container.innerHTML = '';
 
-  charactersToRender.forEach(character => {
+  const positionFilter = document.getElementById('positionFilter').value;
+  const affinityFilter = document.getElementById('affinityFilter').value;
+  const genderFilter = document.getElementById('genderFilter').value;
+
+  const filtered = characters
+    .filter(char =>
+      (!positionFilter || char.position === positionFilter) &&
+      (!affinityFilter || char.affinity === affinityFilter) &&
+      (!genderFilter || char.gender === genderFilter)
+    )
+    .sort((a, b) => a.name.localeCompare(b.name));
+
+  filtered.forEach(char => {
     const card = document.createElement('div');
-    card.classList.add('characterCard');
+    card.className = 'character-card';
+    card.onclick = () => {
+      window.location.href = `character.html?id=${char.id}`;
+    };
+
     card.innerHTML = `
-      <a href="character.html?id=${character.id}">
-        <img src="sprites/characters/${character.id}.png" alt="${character.name}" width="100" height="100" />
-      </a>
-      <p>${character.name}</p>
-      <div class="icons">
-        <img src="sprites/positions/${character.position}.png" alt="${character.position}" title="Position" width="30" height="30" />
-        <img src="sprites/affinities/${character.affinity}.png" alt="${character.affinity}" title="Affinity" width="30" height="30" />
-        <img src="sprites/gender/${character.gender}.png" alt="${character.gender}" title="Gender" width="30" height="30" />
-      </div>
+      <img src="sprites/characters/${char.id}.png" alt="${char.name}" />
+      <div><img src="sprites/positions/${char.position}.png" alt="${char.position}" width="24"/></div>
+      <div><img src="sprites/affinities/${char.affinity}.png" alt="${char.affinity}" width="24"/></div>
+      <div><img src="sprites/gender/${char.gender}.png" alt="${char.gender}" width="24"/></div>
     `;
-    charactersContainer.appendChild(card);
+
+    container.appendChild(card);
   });
 }
 
-function applyFilters() {
-  const posVal = positionFilter.value;
-  const affVal = affinityFilter.value;
-  const genVal = genderFilter.value;
-
-  const filtered = characters.filter(char => {
-    return (posVal === '' || char.position === posVal) &&
-           (affVal === '' || char.affinity === affVal) &&
-           (genVal === '' || char.gender === genVal);
-  });
-
-  renderCharacters(filtered);
-}
-
-positionFilter.addEventListener('change', applyFilters);
-affinityFilter.addEventListener('change', applyFilters);
-genderFilter.addEventListener('change', applyFilters);
+document.getElementById('positionFilter').addEventListener('change', loadCharacters);
+document.getElementById('affinityFilter').addEventListener('change', loadCharacters);
+document.getElementById('genderFilter').addEventListener('change', loadCharacters);
 
 loadCharacters();
