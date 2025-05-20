@@ -1,43 +1,62 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Victory Road - Personajes</title>
-  <link rel="stylesheet" href="styles/style.css" />
+  <title>Character Detail</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #ffffff;
+      padding: 20px;
+      color: #000;
+    }
+    .container {
+      text-align: center;
+    }
+    .sprite {
+      width: 150px;
+      height: 150px;
+    }
+    .description {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+    .back {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 10px 20px;
+      background: #222;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>Inazuma Eleven: Victory Road</h1>
-    <div class="filters">
-      <select id="positionFilter">
-        <option value="">Todas las posiciones</option>
-        <option value="fw">Delantero (FW)</option>
-        <option value="mf">Centrocampista (MF)</option>
-        <option value="df">Defensa (DF)</option>
-        <option value="gk">Portero (GK)</option>
-      </select>
+  <div class="container" id="character-info">
+    Loading...
+  </div>
 
-      <select id="affinityFilter">
-        <option value="">Todas las afinidades</option>
-        <option value="fire">Fuego</option>
-        <option value="earth">Tierra</option>
-        <option value="wind">Viento</option>
-        <option value="wood">Bosque</option>
-      </select>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get("name");
 
-      <select id="genderFilter">
-        <option value="">Todos los géneros</option>
-        <option value="male">Masculino</option>
-        <option value="female">Femenino</option>
-      </select>
-    </div>
-  </header>
+    const descriptions = {
+      "bai_long": "Un chico joven con una confianza absoluta en su propia habilidad. Alberga una rivalidad con Victor."
+    };
 
-  <main>
-    <div id="characterList" class="grid"></div>
-  </main>
+    const container = document.getElementById("character-info");
 
-  <script src="main.js"></script>
+    if (!name) {
+      container.innerHTML = "<p>Character not found.</p>";
+    } else {
+      container.innerHTML = `
+        <h1>${name.replace(/_/g, " ")}</h1>
+        <img class="sprite" src="sprites/characters/${name}.png" alt="${name}">
+        <div class="description">${descriptions[name] || "No description available."}</div>
+        <a class="back" href="index.html">← Back</a>
+      `;
+    }
+  </script>
 </body>
 </html>
