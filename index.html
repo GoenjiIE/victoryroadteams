@@ -1,39 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Victory Road Teams</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Victory Road - Personajes</title>
+  <link rel="stylesheet" href="styles/style.css" />
 </head>
 <body>
-  <h1>Victory Road Builder</h1>
+  <header>
+    <h1>Inazuma Eleven: Victory Road</h1>
+    <div class="filters">
+      <select id="positionFilter">
+        <option value="">Todas las posiciones</option>
+        <option value="fw">Delantero (FW)</option>
+        <option value="mf">Centrocampista (MF)</option>
+        <option value="df">Defensa (DF)</option>
+        <option value="gk">Portero (GK)</option>
+      </select>
 
-  <div class="filters">
-    <select id="positionFilter">
-      <option value="">All Positions</option>
-      <option value="fw">Forward</option>
-      <option value="mf">Midfielder</option>
-      <option value="df">Defender</option>
-      <option value="gk">Goalkeeper</option>
-    </select>
+      <select id="affinityFilter">
+        <option value="">Todas las afinidades</option>
+        <option value="fire">Fuego</option>
+        <option value="earth">Tierra</option>
+        <option value="wind">Viento</option>
+        <option value="wood">Bosque</option>
+      </select>
 
-    <select id="affinityFilter">
-      <option value="">All Affinities</option>
-      <option value="fire">Fire</option>
-      <option value="earth">Earth</option>
-      <option value="wind">Wind</option>
-      <option value="wood">Wood</option>
-    </select>
+      <select id="genderFilter">
+        <option value="">Todos los géneros</option>
+        <option value="male">Masculino</option>
+        <option value="female">Femenino</option>
+      </select>
+    </div>
+  </header>
 
-    <select id="genderFilter">
-      <option value="">All Genders</option>
-      <option value="male">Male</option>
-      <option value="female">Female</option>
-    </select>
-  </div>
-
-  <div id="charactersContainer"></div>
+  <main>
+    <div id="characterList" class="grid"></div>
+  </main>
 
   <script src="main.js"></script>
 </body>
