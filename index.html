@@ -6,7 +6,7 @@
   <title>Inazuma Eleven - Team Builder</title>
   <style>
     body {
-      font-family: Lexend, normal;
+      font-family: Lexend, sans-serif;
       background-color: #ffffff;
       color: #000000;
       margin: 0;
@@ -14,6 +14,17 @@
     }
     h1 {
       text-align: center;
+    }
+    .search-bar {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .search-bar input {
+      padding: 10px;
+      font-size: 16px;
+      width: 250px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
     }
     .filters {
       display: flex;
@@ -44,11 +55,11 @@
       cursor: pointer;
     }
     .character-card img.character-sprite {
-    width: 150px;
-    height: 150px;
-    object-fit: contain;
-    display: block;
-    margin: 20px auto;
+      width: 150px;
+      height: 150px;
+      object-fit: contain;
+      display: block;
+      margin: 20px auto;
     }
     .character-name {
       margin-top: 10px;
@@ -68,6 +79,10 @@
 </head>
 <body>
   <h1>Inazuma Eleven: Victory Road – Team Builder</h1>
+
+  <div class="search-bar">
+    <input type="text" id="search-input" placeholder="Buscar personaje..." />
+  </div>
 
   <div class="filters">
     <span>Posición</span>
@@ -103,6 +118,7 @@
     const filterPosition = document.getElementById("filter-position");
     const filterAffinity = document.getElementById("filter-affinity");
     const filterGender = document.getElementById("filter-gender");
+    const searchInput = document.getElementById("search-input");
 
     let allCharacters = {};
 
@@ -135,11 +151,15 @@
       const pos = filterPosition.value;
       const aff = filterAffinity.value;
       const gen = filterGender.value;
+      const search = searchInput.value.toLowerCase();
 
       const filtered = {};
       for (const key in allCharacters) {
         const c = allCharacters[key];
-        if ((pos && c.position !== pos) || (aff && c.affinity !== aff) || (gen && c.gender !== gen)) {
+        if ((pos && c.position !== pos) ||
+            (aff && c.affinity !== aff) ||
+            (gen && c.gender !== gen) ||
+            (search && !c.name.toLowerCase().includes(search))) {
           continue;
         }
         filtered[key] = c;
@@ -157,6 +177,7 @@
     filterPosition.addEventListener("change", applyFilters);
     filterAffinity.addEventListener("change", applyFilters);
     filterGender.addEventListener("change", applyFilters);
+    searchInput.addEventListener("input", applyFilters);
   </script>
 </body>
 </html>
