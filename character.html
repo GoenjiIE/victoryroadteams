@@ -2,71 +2,92 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Character Detail</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Comparar Personajes - Inazuma Eleven</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #ffffff;
-      padding: 20px;
-      color: #000;
-    }
-  
-    .container {
-      text-align: center;
-    }
-    .sprite {
-    max-width: 300px;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    display: block;
-    margin: 20px auto;
-    }
-    .description {
-      margin-top: 20px;
-      font-size: 18px;
-    }
-    .back {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 10px 20px;
-      background: #222;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-    }
-    .container {
-  max-width: 600px;
-  margin: auto;
-  text-align: center;
-}
+    body { font-family: Lexend, sans-serif; background: #fff; color: #222; }
+    h1 { text-align: center; }
+    .compare-container { display: flex; justify-content: center; gap: 40px; margin-top: 30px; }
+    .character-select { width: 250px; }
+    .character-card { background: #f2f2f2; border-radius: 10px; padding: 10px; text-align: center; margin-top: 20px; }
+    .character-card img { width: 120px; height: 120px; object-fit: contain; }
+    .vs { font-size: 40px; font-weight: bold; align-self: center; }
+    .select-label { font-weight: bold; }
   </style>
 </head>
 <body>
-  <div class="container" id="character-info">
-    Loading...
+  <h1>Comparar Personajes</h1>
+  <div class="compare-container">
+    <div>
+      <div class="select-label">Personaje 1</div>
+      <select id="select1" class="character-select"></select>
+      <div id="card1" class="character-card"></div>
+    </div>
+    <div class="vs">VS</div>
+    <div>
+      <div class="select-label">Personaje 2</div>
+      <select id="select2" class="character-select"></select>
+      <div id="card2" class="character-card"></div>
+    </div>
   </div>
 
   <script>
-    const params = new URLSearchParams(window.location.search);
-    const name = params.get("name");
+    let allCharacters = {};
 
-    const descriptions = {
-      "bai_long": "Un chico joven con una confianza absoluta en su propia habilidad. Alberga una rivalidad con Victor."
-    };
+    function createOption(name) {
+      const opt = document.createElement("option");
+      opt.value = name;
+      opt.textContent = name.replace(/_/g, " ");
+      return opt;
+    }
 
-    const container = document.getElementById("character-info");
-
-    if (!name) {
-      container.innerHTML = "<p>Character not found.</p>";
-    } else {
-      container.innerHTML = `
-        <h1>${name.replace(/_/g, " ")}</h1>
-        <img class="sprite" src="sprites/characters/${name}.png" alt="${name}">
-        <div class="description">${descriptions[name] || "No description available."}</div>
-        <a class="back" href="index.html">← Back</a>
+    function renderCard(cardId, char) {
+      const card = document.getElementById(cardId);
+      if (!char) {
+        card.innerHTML = "<em>Selecciona un personaje</em>";
+        return;
+      }
+      card.innerHTML = `
+        <img src="sprites/characters/${char.name}.png" alt="${char.name}">
+        <div><strong>${char.name.replace(/_/g, " ")}</strong></div>
+        <div>Posición: <img src="sprites/positions/${char.position}.png" width="20"> ${char.position.toUpperCase()}</div>
+        <div>Afinidad: <img src="sprites/affinities/${char.affinity}.png" width="20"> ${char.affinity.charAt(0).toUpperCase() + char.affinity.slice(1)}</div>
+        <div>Género: <img src="sprites/gender/${char.gender}.png" width="20"> ${char.gender === "male" ? "Masculino" : "Femenino"}</div>
+        ${char.stats ? `
+          <div>Estadísticas:</div>
+          <ul>
+            <li>Ofensa: ${char.stats.attack ?? "-"}</li>
+            <li>Defensa: ${char.stats.defense ?? "-"}</li>
+            <li>Velocidad: ${char.stats.speed ?? "-"}</li>
+            <!-- Añade más estadísticas si existen -->
+          </ul>
+        ` : ""}
       `;
     }
+
+    function handleSelection() {
+      const v1 = document.getElementById("select1").value;
+      const v2 = document.getElementById("select2").value;
+      renderCard("card1", allCharacters[v1]);
+      renderCard("card2", allCharacters[v2]);
+    }
+
+    fetch("data/characters.json")
+      .then(res => res.json())
+      .then(data => {
+        allCharacters = data;
+        const sortedNames = Object.keys(allCharacters).sort();
+        const select1 = document.getElementById("select1");
+        const select2 = document.getElementById("select2");
+        select1.appendChild(createOption(""));
+        select2.appendChild(createOption(""));
+        sortedNames.forEach(name => {
+          select1.appendChild(createOption(name));
+          select2.appendChild(createOption(name));
+        });
+        select1.addEventListener("change", handleSelection);
+        select2.addEventListener("change", handleSelection);
+      });
   </script>
 </body>
 </html>
