@@ -121,22 +121,6 @@
 
   <div class="characters" id="characters-container"></div>
 
-  <!-- Panel de comparación -->
-  <div id="compare-panel">
-    <h2>Comparar personajes</h2>
-    <div class="compare-flex">
-      <div>
-        <div id="compare-card1" class="compare-card"></div>
-      </div>
-      <div class="vs">VS</div>
-      <div>
-        <select id="compare-select2"></select>
-        <div id="compare-card2" class="compare-card"></div>
-      </div>
-    </div>
-    <button class="close-btn" onclick="document.getElementById('compare-panel').style.display='none'">Cerrar</button>
-  </div>
-
   <script>
     const container = document.getElementById("characters-container");
     const filterPosition = document.getElementById("filter-position");
@@ -189,23 +173,6 @@
       }
       renderCharacters(filtered);
     }
-
-    // Panel de comparación
-    function showComparePanel(char1) {
-      document.getElementById('compare-panel').style.display = 'block';
-      renderCompareCard('compare-card1', char1);
-
-      // Prepara selector para personaje 2
-      const select2 = document.getElementById('compare-select2');
-      select2.innerHTML = '';
-      Object.values(allCharacters).forEach(char => {
-        if (char.name !== char1.name) {
-          const opt = document.createElement('option');
-          opt.value = char.name;
-          opt.textContent = char.name.replace(/_/g, " ");
-          select2.appendChild(opt);
-        }
-      });
 
       // Selecciona el primero por defecto
       if (select2.options.length > 0) {
