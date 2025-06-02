@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -7,27 +7,13 @@
   <style>
     body {
       font-family: Lexend, sans-serif;
-      background-image: url('img/background.jpg');
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center center;
+      background-color: #ffffff;
       color: #000000;
       margin: 0;
       padding: 20px;
     }
     h1 {
       text-align: center;
-    }
-    .search-bar {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .search-bar input {
-      padding: 10px;
-      font-size: 16px;
-      width: 250px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
     }
     .filters {
       display: flex;
@@ -41,9 +27,8 @@
       font-size: 16px;
     }
     .characters {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-start;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 20px;
     }
     .character-card {
@@ -53,17 +38,6 @@
       text-align: center;
       transition: transform 0.2s;
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-      width: 180px;
-      min-width: 180px;
-      max-width: 180px;
-      height: 260px;
-      min-height: 260px;
-      max-height: 260px;
-      margin: 0;
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
     }
     .character-card:hover {
       transform: scale(1.05);
@@ -74,8 +48,7 @@
       height: 150px;
       object-fit: contain;
       display: block;
-      margin: 20px auto 0 auto;
-      flex-shrink: 0;
+      margin: 20px auto;
     }
     .character-name {
       margin-top: 10px;
@@ -89,17 +62,28 @@
     .icons img {
       width: 24px;
       height: 24px;
-      aspect-ratio: 1/1;
-      object-fit: contain;
       margin: 0 4px;
+    }
+    .nav-link {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .nav-link a {
+      font-weight: bold;
+      font-size: 18px;
+      color: #007bff;
+      text-decoration: none;
+    }
+    .nav-link a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
   <h1>Inazuma Eleven: Victory Road – Team Builder</h1>
 
-  <div class="search-bar">
-    <input type="text" id="search-input" placeholder="Buscar personaje..." />
+  <div class="nav-link">
+    <a href="team.html">Ir al Creador de Equipos</a>
   </div>
 
   <div class="filters">
@@ -124,8 +108,8 @@
     <span>Género</span>
     <select id="filter-gender">
       <option value="">Todos</option>
-      <option value="male">Masculino</option>
-      <option value="female">Femenino</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
     </select>
   </div>
 
@@ -136,7 +120,6 @@
     const filterPosition = document.getElementById("filter-position");
     const filterAffinity = document.getElementById("filter-affinity");
     const filterGender = document.getElementById("filter-gender");
-    const searchInput = document.getElementById("search-input");
 
     let allCharacters = {};
 
@@ -148,6 +131,10 @@
         const char = characters[key];
         const card = document.createElement("div");
         card.className = "character-card";
+        card.onclick = () => {
+          window.location.href = `character.html?name=${char.name}`;
+        };
+
         card.innerHTML = `
           <img class="character-sprite" src="sprites/characters/${char.name}.png" alt="${char.name}">
           <div class="character-name">${char.name.replace(/_/g, " ")}</div>
@@ -165,15 +152,11 @@
       const pos = filterPosition.value;
       const aff = filterAffinity.value;
       const gen = filterGender.value;
-      const search = searchInput.value.toLowerCase();
 
       const filtered = {};
       for (const key in allCharacters) {
         const c = allCharacters[key];
-        if ((pos && c.position !== pos) ||
-            (aff && c.affinity !== aff) ||
-            (gen && c.gender !== gen) ||
-            (search && !c.name.toLowerCase().includes(search))) {
+        if ((pos && c.position !== pos) || (aff && c.affinity !== aff) || (gen && c.gender !== gen)) {
           continue;
         }
         filtered[key] = c;
@@ -191,7 +174,6 @@
     filterPosition.addEventListener("change", applyFilters);
     filterAffinity.addEventListener("change", applyFilters);
     filterGender.addEventListener("change", applyFilters);
-    searchInput.addEventListener("input", applyFilters);
   </script>
 </body>
 </html>
