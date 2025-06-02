@@ -41,10 +41,10 @@
       font-size: 16px;
     }
     .characters {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
       gap: 20px;
-      align-items: start; /* Añadido para alinear arriba */
     }
     .character-card {
       background: #f2f2f2;
@@ -52,15 +52,14 @@
       padding: 10px;
       text-align: center;
       transition: transform 0.2s;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-      width: 180px;              /* Fijo */
-      min-width: 180px;           /* Fijo */
-      max-width: 180px;           /* Fijo */
-      height: 260px;              /* Fijo */
-      min-height: 260px;          /* Fijo */
-      max-height: 260px;          /* Fijo */
-      margin-left: auto;          /* Centra la tarjeta en la celda */
-      margin-right: auto;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      width: 180px;
+      min-width: 180px;
+      max-width: 180px;
+      height: 260px;
+      min-height: 260px;
+      max-height: 260px;
+      margin: 0;
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
