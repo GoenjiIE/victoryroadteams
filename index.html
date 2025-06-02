@@ -9,8 +9,6 @@
       font-family: Lexend, sans-serif;
       background-image: url('img/background.jpg');
       background-size: cover;
-      aspect-radio: 1/1;
-      object-fit: cointain;
       background-repeat: no-repeat;
       background-position: center center;
       color: #000000;
@@ -46,16 +44,27 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 20px;
+      align-items: start; /* Añadido para alinear arriba */
     }
     .character-card {
       background: #f2f2f2;
       border-radius: 10px;
       padding: 10px;
-      aspect-radio: 1/1;
-      object-fit: contain;
       text-align: center;
       transition: transform 0.2s;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      width: 180px;              /* Fijo */
+      min-width: 180px;           /* Fijo */
+      max-width: 180px;           /* Fijo */
+      height: 260px;              /* Fijo */
+      min-height: 260px;          /* Fijo */
+      max-height: 260px;          /* Fijo */
+      margin-left: auto;          /* Centra la tarjeta en la celda */
+      margin-right: auto;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
     }
     .character-card:hover {
       transform: scale(1.05);
@@ -66,7 +75,8 @@
       height: 150px;
       object-fit: contain;
       display: block;
-      margin: 20px auto;
+      margin: 20px auto 0 auto;
+      flex-shrink: 0;
     }
     .character-name {
       margin-top: 10px;
@@ -139,7 +149,6 @@
         const char = characters[key];
         const card = document.createElement("div");
         card.className = "character-card";
-        // Eliminado el onclick
         card.innerHTML = `
           <img class="character-sprite" src="sprites/characters/${char.name}.png" alt="${char.name}">
           <div class="character-name">${char.name.replace(/_/g, " ")}</div>
