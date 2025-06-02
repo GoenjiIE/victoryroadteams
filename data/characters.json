@@ -1,392 +1,198 @@
 {
   "aitor_cazador": {
+    "id": 12,
     "name": "aitor_cazador",
     "position": "df",
     "affinity": "wood",
-    "gender": "male",
-    "stats": {
-      "kick": 62,
-      "control": 67,
-      "precision": 71,
-      "physical": 79,
-      "agility": 68,
-      "intelligence": 72,
-      "technique": 70
-    }
+    "gender": "male"
   },
   "arion_sherwind": {
+    "id": 24,
     "name": "arion_sherwind",
     "position": "mf",
     "affinity": "wind",
-    "gender": "male",
-    "stats": {
-      "kick": 74,
-      "control": 81,
-      "precision": 77,
-      "physical": 70,
-      "agility": 84,
-      "intelligence": 79,
-      "technique": 78
-    }
+    "gender": "male"
   },
   "axel_blaze": {
+    "id": 2,
     "name": "axel_blaze",
     "position": "fw",
     "affinity": "fire",
-    "gender": "male",
-    "stats": {
-      "kick": 88,
-      "control": 74,
-      "precision": 81,
-      "physical": 79,
-      "agility": 76,
-      "intelligence": 73,
-      "technique": 75
-    }
+    "gender": "male"
   },
   "bai_long": {
+    "id": 9,
     "name": "bai_long",
     "position": "fw",
     "affinity": "wind",
-    "gender": "male",
-    "stats": {
-      "kick": 83,
-      "control": 72,
-      "precision": 75,
-      "physical": 76,
-      "agility": 81,
-      "intelligence": 77,
-      "technique": 80
-    }
+    "gender": "male"
   },
   "byron_love": {
+    "id": 6,
     "name": "byron_love",
     "position": "mf",
     "affinity": "wood",
-    "gender": "male",
-    "stats": {
-      "kick": 76,
-      "control": 79,
-      "precision": 80,
-      "physical": 67,
-      "agility": 77,
-      "intelligence": 89,
-      "technique": 85
-    }
+    "gender": "male"
   },
   "caleb_stonewall": {
+    "id": 11,
     "name": "caleb_stonewall",
     "position": "mf",
     "affinity": "fire",
-    "gender": "male",
-    "stats": {
-      "kick": 70,
-      "control": 74,
-      "precision": 80,
-      "physical": 82,
-      "agility": 75,
-      "intelligence": 81,
-      "technique": 79
-    }
+    "gender": "male"
   },
   "erik_eagle": {
+    "id": 5,
     "name": "erik_eagle",
     "position": "mf",
     "affinity": "wood",
-    "gender": "male",
-    "stats": {
-      "kick": 77,
-      "control": 80,
-      "precision": 78,
-      "physical": 75,
-      "agility": 79,
-      "intelligence": 84,
-      "technique": 82
-    }
+    "gender": "male"
   },
   "fei_rune": {
+    "id": 10,
     "name": "fei_rune",
     "position": "mf",
     "affinity": "wood",
-    "gender": "male",
-    "stats": {
-      "kick": 73,
-      "control": 77,
-      "precision": 75,
-      "physical": 78,
-      "agility": 82,
-      "intelligence": 80,
-      "technique": 78
-    }
+    "gender": "male"
   },
   "gabriel_garcia": {
+    "id": 15,
     "name": "gabriel_garcia",
     "position": "df",
     "affinity": "wood",
-    "gender": "male",
-    "stats": {
-      "kick": 65,
-      "control": 70,
-      "precision": 68,
-      "physical": 83,
-      "agility": 71,
-      "intelligence": 74,
-      "technique": 69
-    }
+    "gender": "male"
   },
   "goldie_lemon": {
+    "id": 14,
     "name": "goldie_lemon",
     "position": "df",
     "affinity": "fire",
-    "gender": "female",
-    "stats": {
-      "kick": 67,
-      "control": 74,
-      "precision": 72,
-      "physical": 80,
-      "agility": 76,
-      "intelligence": 71,
-      "technique": 73
-    }
+    "gender": "female"
   },
   "heath_moore": {
+    "id": 18,
     "name": "heath_moore",
     "position": "fw",
     "affinity": "fire",
-    "gender": "male",
-    "stats": {
-      "kick": 86,
-      "control": 73,
-      "precision": 78,
-      "physical": 81,
-      "agility": 74,
-      "intelligence": 75,
-      "technique": 77
-    }
+    "gender": "male"
+  },
+  "hurley_kane": {
+    "id": 26,
+    "name": "hurley_kane",
+    "position": "df",
+    "affinity": "wind",
+    "gender": "male"
   },
   "jack_wallside": {
+    "id": 4,
     "name": "jack_wallside",
     "position": "df",
     "affinity": "earth",
-    "gender": "male",
-    "stats": {
-      "kick": 60,
-      "control": 67,
-      "precision": 65,
-      "physical": 88,
-      "agility": 62,
-      "intelligence": 70,
-      "technique": 68
-    }
+    "gender": "male"
   },
   "jean_pierre_lapin": {
+    "id": 21,
     "name": "jean_pierre_lapin",
     "position": "df",
     "affinity": "earth",
-    "gender": "male",
-    "stats": {
-      "kick": 63,
-      "control": 71,
-      "precision": 69,
-      "physical": 82,
-      "agility": 70,
-      "intelligence": 73,
-      "technique": 71
-    }
+    "gender": "male"
   },
   "jordan_greenway": {
+    "id": 17,
     "name": "jordan_greenway",
     "position": "mf",
     "affinity": "wood",
-    "gender": "male",
-    "stats": {
-      "kick": 75,
-      "control": 79,
-      "precision": 77,
-      "physical": 74,
-      "agility": 78,
-      "intelligence": 79,
-      "technique": 80
-    }
+    "gender": "male"
   },
   "jude_sharp": {
+    "id": 3,
     "name": "jude_sharp",
     "position": "mf",
     "affinity": "wind",
-    "gender": "male",
-    "stats": {
-      "kick": 72,
-      "control": 90,
-      "precision": 85,
-      "physical": 69,
-      "agility": 80,
-      "intelligence": 94,
-      "technique": 89
-    }
+    "gender": "male"
   },
   "kevin_dragonfly": {
+    "id": 23,
     "name": "kevin_dragonfly",
     "position": "fw",
     "affinity": "wood",
-    "gender": "male",
-    "stats": {
-      "kick": 80,
-      "control": 75,
-      "precision": 77,
-      "physical": 79,
-      "agility": 81,
-      "intelligence": 70,
-      "technique": 74
-    }
+    "gender": "male"
   },
   "mark_evans": {
+    "id": 1,
     "name": "mark_evans",
     "position": "gk",
     "affinity": "earth",
-    "gender": "male",
-    "stats": {
-      "kick": 65,
-      "control": 68,
-      "precision": 70,
-      "physical": 83,
-      "agility": 77,
-      "intelligence": 76,
-      "technique": 71
-    }
+    "gender": "male"
   },
   "nathan_swift": {
+    "id": 13,
     "name": "nathan_swift",
     "position": "df",
     "affinity": "wind",
-    "gender": "male",
-    "stats": {
-      "kick": 68,
-      "control": 71,
-      "precision": 73,
-      "physical": 78,
-      "agility": 91,
-      "intelligence": 75,
-      "technique": 72
-    }
+    "gender": "male"
   },
   "riccardo_di_rigo": {
+    "id": 20,
     "name": "riccardo_di_rigo",
     "position": "mf",
     "affinity": "wood",
-    "gender": "male",
-    "stats": {
-      "kick": 71,
-      "control": 79,
-      "precision": 76,
-      "physical": 74,
-      "agility": 77,
-      "intelligence": 82,
-      "technique": 80
-    }
+    "gender": "male"
   },
   "samguk_han": {
+    "id": 7,
     "name": "samguk_han",
     "position": "gk",
     "affinity": "fire",
-    "gender": "male",
-    "stats": {
-      "kick": 66,
-      "control": 70,
-      "precision": 68,
-      "physical": 84,
-      "agility": 75,
-      "intelligence": 72,
-      "technique": 71
-    }
+    "gender": "male"
   },
   "scotty_banyan": {
+    "id": 16,
     "name": "scotty_banyan",
     "position": "df",
     "affinity": "wood",
-    "gender": "male",
-    "stats": {
-      "kick": 63,
-      "control": 69,
-      "precision": 70,
-      "physical": 81,
-      "agility": 72,
-      "intelligence": 73,
-      "technique": 69
-    }
+    "gender": "male"
   },
   "suzette_hartland": {
+    "id": 19,
     "name": "suzette_hartland",
     "position": "fw",
     "affinity": "wood",
-    "gender": "female",
-    "stats": {
-      "kick": 77,
-      "control": 73,
-      "precision": 78,
-      "physical": 75,
-      "agility": 83,
-      "intelligence": 76,
-      "technique": 80
-    }
+    "gender": "female"
+  },
+  "tezcat": {
+    "id": 22,
+    "name": "tezcat",
+    "position": "fw",
+    "affinity": "wood",
+    "gender": "male"
   },
   "victor_blade": {
+    "id": 27,
     "name": "victor_blade",
     "position": "fw",
     "affinity": "fire",
-    "gender": "male",
-    "stats": {
-      "kick": 86,
-      "control": 75,
-      "precision": 80,
-      "physical": 78,
-      "agility": 80,
-      "intelligence": 74,
-      "technique": 77
-    }
+    "gender": "male"
   },
   "victoria_vanguard": {
+    "id": 25,
     "name": "victoria_vanguard",
     "position": "mf",
     "affinity": "wind",
-    "gender": "female",
-    "stats": {
-      "kick": 74,
-      "control": 82,
-      "precision": 79,
-      "physical": 74,
-      "agility": 78,
-      "intelligence": 83,
-      "technique": 81
-    }
+    "gender": "female"
   },
   "xavier_foster": {
+    "id": 8,
     "name": "xavier_foster",
     "position": "fw",
     "affinity": "fire",
-    "gender": "male",
-    "stats": {
-      "kick": 89,
-      "control": 77,
-      "precision": 84,
-      "physical": 80,
-      "agility": 79,
-      "intelligence": 76,
-      "technique": 83
-    }
+    "gender": "male"
   },
   "zanark_avalonic": {
+    "id": 28,
     "name": "zanark_avalonic",
     "position": "fw",
     "affinity": "earth",
-    "gender": "male",
-    "stats": {
-      "kick": 85,
-      "control": 71,
-      "precision": 79,
-      "physical": 85,
-      "agility": 77,
-      "intelligence": 73,
-      "technique": 72
-    }
+    "gender": "male"
   }
 }
