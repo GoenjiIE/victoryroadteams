@@ -3,111 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Crear tu equipo - Inazuma Eleven</title>
-  <style>
-    body {
-      font-family: Lexend, sans-serif;
-      background-color: #ffffff;
-      color: #000;
-      margin: 0;
-      padding: 20px;
-    }
-
-    h1 {
-      text-align: center;
-    }
-
-    .available-players, .team-formation {
-      margin-top: 30px;
-    }
-
-    .character-card {
-      background: #f2f2f2;
-      border-radius: 10px;
-      padding: 10px;
-      text-align: center;
-      transition: transform 0.2s;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .character-card:hover {
-      transform: scale(1.05);
-      cursor: pointer;
-    }
-
-    .character-sprite {
-      width: 120px;
-      height: 120px;
-      object-fit: contain;
-      display: block;
-      margin: 10px auto;
-    }
-
-    .character-name {
-      font-weight: bold;
-      font-size: 14px;
-      margin-bottom: 6px;
-      text-transform: capitalize;
-    }
-
-    .icons img {
-      width: 24px;
-      height: 24px;
-      margin: 0 4px;
-    }
-
-    .available-players {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 20px;
-    }
-
-    .team-formation {
-      margin-top: 40px;
-    }
-
-    #export-team {
-      margin-top: 20px;
-      padding: 10px 20px;
-      font-size: 16px;
-      border: none;
-      border-radius: 8px;
-      background-color: #333;
-      color: white;
-      cursor: pointer;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    #export-team:hover {
-      background-color: #555;
-    }
-
-    button {
-      margin-top: 8px;
-      padding: 6px 10px;
-      font-size: 12px;
-      border: none;
-      border-radius: 6px;
-      background-color: #c0392b;
-      color: white;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #e74c3c;
-    }
-  </style>
+  <title>Inazuma Eleven - Creador de Equipos</title>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
-  <h1>Construye tu Equipo</h1>
+<body>Add commentMore actions
+  <h1>Inazuma Eleven: Creador de Equipos</h1>
 
-  <!-- ✅ Aquí está la línea requerida -->
-  <div class="available-players"></div>
-  <div class="team-formation"></div>
+  <div class="filters">
+    <!-- Filtros y barra de búsqueda -->
+    <!-- Similar a los de index.html -->
+  </div>
+
+  <div class="team-builder">
+    <div class="available-players">
+      <!-- Lista de jugadores disponibles -->
+    </div>
+    <div class="team-formation">
+      <!-- Visualización del equipo en formación -->
+    </div>
+  </div>
+
   <button id="export-team">Exportar Equipo</button>
 
-  <script src="scripts/team.js"></script>
+  <script src="js/team.js"></script>
 </body>
 </html>
