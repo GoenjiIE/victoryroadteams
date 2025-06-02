@@ -9,8 +9,6 @@
       font-family: Lexend, sans-serif;
       /* Cambia el color de fondo por la imagen */
       background-image: url('img/background.jpg');
-      background-size: cover;
-      aspect-radio: 1/1;
       object-fit: contain;
       background-repeat: no-repeat;
       background-position: center center;
@@ -83,6 +81,64 @@
       object-fit: contain;
       margin: 0 4px;
     }
+    /* Panel de comparación */
+    #compare-panel {
+      display: none;
+      position: fixed;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 0 20px #0004;
+      padding: 32px;
+      z-index: 100;
+      min-width: 340px;
+    }
+    #compare-panel h2 {
+      margin-top: 0;
+      text-align: center;
+    }
+    .compare-flex {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      justify-content: center;
+      margin: 25px 0;
+    }
+    .compare-card {
+      background: #f2f2f2;
+      border-radius: 10px;
+      padding: 12px;
+      text-align: center;
+      min-width: 180px;
+    }
+    .compare-card img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      margin-bottom: 8px;
+    }
+    .vs {
+      font-size: 2em;
+      font-weight: bold;
+    }
+    .close-btn {
+      display: block;
+      margin: 0 auto;
+      margin-top: 16px;
+      padding: 8px 18px;
+      background: #e02d2d;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .close-btn:hover {
+      background: #b91c1c;
+    }
   </style>
 </head>
 <body>
@@ -120,6 +176,22 @@
   </div>
 
   <div class="characters" id="characters-container"></div>
+
+  <!-- Panel de comparación -->
+  <div id="compare-panel">
+    <h2>Comparar personajes</h2>
+    <div class="compare-flex">
+      <div>
+        <div id="compare-card1" class="compare-card"></div>
+      </div>
+      <div class="vs">VS</div>
+      <div>
+        <select id="compare-select2"></select>
+        <div id="compare-card2" class="compare-card"></div>
+      </div>
+    </div>
+    <button class="close-btn" onclick="document.getElementById('compare-panel').style.display='none'">Cerrar</button>
+  </div>
 
   <script>
     const container = document.getElementById("characters-container");
@@ -173,6 +245,23 @@
       }
       renderCharacters(filtered);
     }
+
+    // Panel de comparación
+    function showComparePanel(char1) {
+      document.getElementById('compare-panel').style.display = 'block';
+      renderCompareCard('compare-card1', char1);
+
+      // Prepara selector para personaje 2
+      const select2 = document.getElementById('compare-select2');
+      select2.innerHTML = '';
+      Object.values(allCharacters).forEach(char => {
+        if (char.name !== char1.name) {
+          const opt = document.createElement('option');
+          opt.value = char.name;
+          opt.textContent = char.name.replace(/_/g, " ");
+          select2.appendChild(opt);
+        }
+      });
 
       // Selecciona el primero por defecto
       if (select2.options.length > 0) {
