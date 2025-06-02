@@ -2,9 +2,9 @@ body {
   font-family: Lexend, normal;
   margin: 0;
   padding: 0;
-  background: #f9f9f9;
+  background: url('../img/background.jpg') no-repeat center center fixed;
+  background-size: cover;
 }
-
 header {
   background-color: #004080;
   color: white;
