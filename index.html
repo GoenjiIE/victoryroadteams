@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>More actions
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -7,133 +7,56 @@
   <style>
     body {
       font-family: Lexend, sans-serif;
-      background-color: #ffffff;
+      background-image: url('img/background.jpg');
+      background-size: cover;
+
+
+      background-repeat: no-repeat;
+      background-position: center center;
       color: #000000;
-      margin: 0;
-      padding: 20px;
-    }
-    h1 {
-      text-align: center;
-    }
-    .filters {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      margin-bottom: 20px;
-    }
-    .filters select {
-      padding: 5px;
-      font-size: 16px;
-    }
-    .characters {
+@@ -46,16 +44,27 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 20px;
+      align-items: start; /* Añadido para alinear arriba */
     }
     .character-card {
       background: #f2f2f2;
       border-radius: 10px;
       padding: 10px;
+
+
       text-align: center;
       transition: transform 0.2s;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      width: 180px;              /* Fijo */
+      min-width: 180px;           /* Fijo */
+      max-width: 180px;           /* Fijo */
+      height: 260px;              /* Fijo */
+      min-height: 260px;          /* Fijo */
+      max-height: 260px;          /* Fijo */
+      margin-left: auto;          /* Centra la tarjeta en la celda */
+      margin-right: auto;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
     }
     .character-card:hover {
       transform: scale(1.05);
-      cursor: pointer;
-    }
-    .character-card img.character-sprite {
-      width: 150px;
+@@ -66,7 +75,8 @@
       height: 150px;
       object-fit: contain;
       display: block;
-      margin: 20px auto;
+      margin: 20px auto 0 auto;
+      flex-shrink: 0;
     }
     .character-name {
       margin-top: 10px;
-      font-weight: bold;
-      font-size: 16px;
-      text-transform: capitalize;
-    }
-    .icons {
-      margin-top: 8px;
-    }
-    .icons img {
-      width: 24px;
-      height: 24px;
-      margin: 0 4px;
-    }
-    .nav-link {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .nav-link a {
-      font-weight: bold;
-      font-size: 18px;
-      color: #007bff;
-      text-decoration: none;
-    }
-    .nav-link a:hover {
-      text-decoration: underline;
-    }
-  </style>
-</head>
-<body>
-  <h1>Inazuma Eleven: Victory Road – Team Builder</h1>
-
-  <div class="nav-link">
-    <a href="team.html">Ir al Creador de Equipos</a>
-  </div>
-
-  <div class="filters">
-    <span>Posición</span>
-    <select id="filter-position">
-      <option value="">Todos</option>
-      <option value="gk">Portero (GK)</option>
-      <option value="df">Defensa (DF)</option>
-      <option value="mf">Mediocampista (MF)</option>
-      <option value="fw">Delantero (FW)</option>
-    </select>
-
-    <span>Afinidad</span>
-    <select id="filter-affinity">
-      <option value="">Todos</option>
-      <option value="fire">Fuego</option>
-      <option value="earth">Tierra</option>
-      <option value="wind">Aire</option>
-      <option value="wood">Bosque</option>
-    </select>
-
-    <span>Género</span>
-    <select id="filter-gender">
-      <option value="">Todos</option>
-      <option value="male">Male</option>
-      <option value="female">Female</option>
-    </select>
-  </div>
-
-  <div class="characters" id="characters-container"></div>
-
-  <script>
-    const container = document.getElementById("characters-container");
-    const filterPosition = document.getElementById("filter-position");
-    const filterAffinity = document.getElementById("filter-affinity");
-    const filterGender = document.getElementById("filter-gender");
-
-    let allCharacters = {};
-
-    function renderCharacters(characters) {
-      container.innerHTML = "";
-      const sortedNames = Object.keys(characters).sort();
-
-      sortedNames.forEach((key) => {
+@@ -139,51 +149,50 @@
         const char = characters[key];
         const card = document.createElement("div");
         card.className = "character-card";
-        card.onclick = () => {
-          window.location.href = `character.html?name=${char.name}`;
-        };
 
         card.innerHTML = `
           <img class="character-sprite" src="sprites/characters/${char.name}.png" alt="${char.name}">
@@ -152,11 +75,15 @@
       const pos = filterPosition.value;
       const aff = filterAffinity.value;
       const gen = filterGender.value;
+      const search = searchInput.value.toLowerCase();
 
       const filtered = {};
       for (const key in allCharacters) {
         const c = allCharacters[key];
-        if ((pos && c.position !== pos) || (aff && c.affinity !== aff) || (gen && c.gender !== gen)) {
+        if ((pos && c.position !== pos) ||
+            (aff && c.affinity !== aff) ||
+            (gen && c.gender !== gen) ||
+            (search && !c.name.toLowerCase().includes(search))) {
           continue;
         }
         filtered[key] = c;
@@ -174,6 +101,7 @@
     filterPosition.addEventListener("change", applyFilters);
     filterAffinity.addEventListener("change", applyFilters);
     filterGender.addEventListener("change", applyFilters);
-  </script>
+    searchInput.addEventListener("input", applyFilters);
+  </script>More actions
 </body>
 </html>
