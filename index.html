@@ -1,4 +1,4 @@
-<!DOCTYPE html>More actions
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -7,56 +7,206 @@
   <style>
     body {
       font-family: Lexend, sans-serif;
-      background-image: url('img/background.jpg');
-      background-size: cover;
-
-
-      background-repeat: no-repeat;
-      background-position: center center;
+      background-color: #ffffff;More actions
       color: #000000;
-@@ -46,16 +44,27 @@
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .search-bar {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .search-bar input {
+      padding: 10px;
+      font-size: 16px;
+      width: 250px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    .filters select {
+      padding: 5px;
+      font-size: 16px;
+    }
+    .characters {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 20px;
-      align-items: start; /* Añadido para alinear arriba */
     }
     .character-card {
       background: #f2f2f2;
       border-radius: 10px;
       padding: 10px;
-
-
       text-align: center;
       transition: transform 0.2s;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-      width: 180px;              /* Fijo */
-      min-width: 180px;           /* Fijo */
-      max-width: 180px;           /* Fijo */
-      height: 260px;              /* Fijo */
-      min-height: 260px;          /* Fijo */
-      max-height: 260px;          /* Fijo */
-      margin-left: auto;          /* Centra la tarjeta en la celda */
-      margin-right: auto;
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     }
     .character-card:hover {
       transform: scale(1.05);
-@@ -66,7 +75,8 @@
+      cursor: pointer;
+    }
+    .character-card img.character-sprite {
+      width: 150px;
       height: 150px;
       object-fit: contain;
       display: block;
-      margin: 20px auto 0 auto;
-      flex-shrink: 0;
+      margin: 20px auto;
     }
     .character-name {
       margin-top: 10px;
-@@ -139,51 +149,50 @@
+      font-weight: bold;
+      font-size: 16px;
+      text-transform: capitalize;
+    }
+    .icons {
+      margin-top: 8px;
+    }
+    .icons img {
+      width: 24px;
+      height: 24px;
+      margin: 0 4px;
+    }
+    /* Panel de comparación */
+    #compare-panel {
+      display: none;
+      position: fixed;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 0 20px #0004;
+      padding: 32px;
+      z-index: 100;
+      min-width: 340px;
+    }
+    #compare-panel h2 {
+      margin-top: 0;
+      text-align: center;
+    }
+    .compare-flex {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      justify-content: center;
+      margin: 25px 0;
+    }
+    .compare-card {
+      background: #f2f2f2;
+      border-radius: 10px;
+      padding: 12px;
+      text-align: center;
+      min-width: 180px;
+    }
+    .compare-card img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      margin-bottom: 8px;
+    }
+    .vs {
+      font-size: 2em;
+      font-weight: bold;
+    }
+    .close-btn {
+      display: block;
+      margin: 0 auto;
+      margin-top: 16px;
+      padding: 8px 18px;
+      background: #e02d2d;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .close-btn:hover {
+      background: #b91c1c;
+    }
+  </style>
+</head>
+<body>
+  <h1>Inazuma Eleven: Victory Road – Team Builder</h1>
+
+  <div class="search-bar">
+    <input type="text" id="search-input" placeholder="Buscar personaje..." />
+  </div>
+
+  <div class="filters">
+    <span>Posición</span>
+    <select id="filter-position">
+      <option value="">Todos</option>
+      <option value="gk">Portero (GK)</option>
+      <option value="df">Defensa (DF)</option>
+      <option value="mf">Mediocampista (MF)</option>
+      <option value="fw">Delantero (FW)</option>
+    </select>
+
+    <span>Afinidad</span>
+    <select id="filter-affinity">
+      <option value="">Todos</option>
+      <option value="fire">Fuego</option>
+      <option value="earth">Tierra</option>
+      <option value="wind">Aire</option>
+      <option value="wood">Bosque</option>
+    </select>
+
+    <span>Género</span>
+    <select id="filter-gender">
+      <option value="">Todos</option>
+      <option value="male">Masculino</option>
+      <option value="female">Femenino</option>
+    </select>
+  </div>
+
+  <div class="characters" id="characters-container"></div>
+
+  <!-- Panel de comparación -->
+  <div id="compare-panel">
+    <h2>Comparar personajes</h2>
+    <div class="compare-flex">
+      <div>
+        <div id="compare-card1" class="compare-card"></div>
+      </div>
+      <div class="vs">VS</div>
+      <div>
+        <select id="compare-select2"></select>
+        <div id="compare-card2" class="compare-card"></div>
+      </div>
+    </div>
+    <button class="close-btn" onclick="document.getElementById('compare-panel').style.display='none'">Cerrar</button>
+  </div>
+
+  <script>
+    const container = document.getElementById("characters-container");
+    const filterPosition = document.getElementById("filter-position");
+    const filterAffinity = document.getElementById("filter-affinity");
+    const filterGender = document.getElementById("filter-gender");
+    const searchInput = document.getElementById("search-input");
+
+    let allCharacters = {};
+
+    function renderCharacters(characters) {
+      container.innerHTML = "";
+      const sortedNames = Object.keys(characters).sort();
+
+      sortedNames.forEach((key) => {
         const char = characters[key];
         const card = document.createElement("div");
         card.className = "character-card";
+        card.onclick = () => {
+          showComparePanel(char);
+        };
 
         card.innerHTML = `
           <img class="character-sprite" src="sprites/characters/${char.name}.png" alt="${char.name}">
@@ -91,6 +241,59 @@
       renderCharacters(filtered);
     }
 
+    // Panel de comparación
+    function showComparePanel(char1) {
+      document.getElementById('compare-panel').style.display = 'block';
+      renderCompareCard('compare-card1', char1);
+
+      // Prepara selector para personaje 2
+      const select2 = document.getElementById('compare-select2');
+      select2.innerHTML = '';
+      Object.values(allCharacters).forEach(char => {
+        if (char.name !== char1.name) {
+          const opt = document.createElement('option');
+          opt.value = char.name;
+          opt.textContent = char.name.replace(/_/g, " ");
+          select2.appendChild(opt);
+        }
+      });
+
+      // Selecciona el primero por defecto
+      if (select2.options.length > 0) {
+        renderCompareCard('compare-card2', allCharacters[select2.value]);
+      } else {
+        document.getElementById('compare-card2').innerHTML = '<em>No hay otro personaje.</em>';
+      }
+
+      // Cambia el personaje 2 al seleccionar otro
+      select2.onchange = function() {
+        renderCompareCard('compare-card2', allCharacters[this.value]);
+      };
+    }
+
+    function renderCompareCard(cardId, char) {
+      const card = document.getElementById(cardId);
+      if (!char) {
+        card.innerHTML = "<em>Selecciona un personaje</em>";
+        return;
+      }
+      card.innerHTML = `
+        <img src="sprites/characters/${char.name}.png" alt="${char.name}">
+        <div><strong>${char.name.replace(/_/g, " ")}</strong></div>
+        <div>Posición: <img src="sprites/positions/${char.position}.png" width="20"> ${char.position.toUpperCase()}</div>
+        <div>Afinidad: <img src="sprites/affinities/${char.affinity}.png" width="20"> ${char.affinity.charAt(0).toUpperCase() + char.affinity.slice(1)}</div>
+        <div>Género: <img src="sprites/gender/${char.gender}.png" width="20"> ${char.gender === "male" ? "Masculino" : "Femenino"}</div>
+        ${(char.stats ? `
+          <div>Estadísticas:</div>
+          <ul>
+            <li>Ofensa: ${char.stats.attack ?? "-"}</li>
+            <li>Defensa: ${char.stats.defense ?? "-"}</li>
+            <li>Velocidad: ${char.stats.speed ?? "-"}</li>
+          </ul>
+        ` : "")}
+      `;
+    }
+
     fetch("data/characters.json")
       .then((res) => res.json())
       .then((data) => {
@@ -102,6 +305,6 @@
     filterAffinity.addEventListener("change", applyFilters);
     filterGender.addEventListener("change", applyFilters);
     searchInput.addEventListener("input", applyFilters);
-  </script>More actions
+  </script>
 </body>
 </html>
