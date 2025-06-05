@@ -20,12 +20,22 @@
     "affinity": "fire",
     "gender": "male"
   },
-  "bai_long": {
-    "id": 9,
-    "name": "bai_long",
-    "position": "fw",
+    {
+    "id": 6,
+    "name": "Bailong",
+    "position": "FW",
     "affinity": "wind",
-    "gender": "male"
+    "gender": "male",
+    "description": "Delantero imponente conocido como el Dragón Blanco.",
+    "stats": {
+      "potencia": { "base": 218, "max": 310, "tags": ["DC"] },
+      "tecnica": { "base": 128, "max": 192, "tags": ["MC"] },
+      "control": { "base": 157, "max": 231, "tags": ["DC", "MC"] },
+      "inteligencia": { "base": 108, "max": 162, "tags": ["DC", "MC"] },
+      "presion": { "base": 74, "max": 111, "tags": ["DC"] },
+      "agilidad": { "base": 98, "max": 146, "tags": ["POR"] },
+      "fisico": { "base": 62, "max": 93, "tags": ["POR", "DC"] }
+    }
   },
   "byron_love": {
     "id": 6,
