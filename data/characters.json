@@ -1,26 +1,45 @@
-{
-  "aitor_cazador": {
-    "id": 12,
-    "name": "aitor_cazador",
-    "position": "df",
-    "affinity": "wood",
-    "gender": "male"
-  },
-  "arion_sherwind": {
-    "id": 24,
-    "name": "arion_sherwind",
-    "position": "mf",
-    "affinity": "wind",
-    "gender": "male"
-  },
-  "axel_blaze": {
-    "id": 2,
-    "name": "axel_blaze",
-    "position": "fw",
+[
+  {
+    "id": 1,
+    "name": "Mark Evans",
+    "position": "GK",
     "affinity": "fire",
-    "gender": "male"
+    "gender": "male",
+    "description": "El apasionado y optimista portero y capitán del Raimon."
   },
-    {
+  {
+    "id": 2,
+    "name": "Axel Blaze",
+    "position": "FW",
+    "affinity": "fire",
+    "gender": "male",
+    "description": "El delantero estrella, famoso por su Fire Tornado."
+  },
+  {
+    "id": 3,
+    "name": "Jude Sharp",
+    "position": "MF",
+    "affinity": "wind",
+    "gender": "male",
+    "description": "Cerebro táctico del equipo y gran estratega."
+  },
+  {
+    "id": 4,
+    "name": "Celia Hills",
+    "position": "DF",
+    "affinity": "earth",
+    "gender": "female",
+    "description": "Defensa y manager de Raimon, muy leal a sus amigos."
+  },
+  {
+    "id": 5,
+    "name": "Nelly Raimon",
+    "position": "MF",
+    "affinity": "wood",
+    "gender": "female",
+    "description": "Presidenta del consejo escolar y gran apoyo del equipo."
+  },
+  {
     "id": 6,
     "name": "Bailong",
     "position": "FW",
@@ -36,173 +55,5 @@
       "agilidad": { "base": 98, "max": 146, "tags": ["POR"] },
       "fisico": { "base": 62, "max": 93, "tags": ["POR", "DC"] }
     }
-  },
-  "byron_love": {
-    "id": 6,
-    "name": "byron_love",
-    "position": "mf",
-    "affinity": "wood",
-    "gender": "male"
-  },
-  "caleb_stonewall": {
-    "id": 11,
-    "name": "caleb_stonewall",
-    "position": "mf",
-    "affinity": "fire",
-    "gender": "male"
-  },
-  "erik_eagle": {
-    "id": 5,
-    "name": "erik_eagle",
-    "position": "mf",
-    "affinity": "wood",
-    "gender": "male"
-  },
-  "fei_rune": {
-    "id": 10,
-    "name": "fei_rune",
-    "position": "mf",
-    "affinity": "wood",
-    "gender": "male"
-  },
-  "gabriel_garcia": {
-    "id": 15,
-    "name": "gabriel_garcia",
-    "position": "df",
-    "affinity": "wood",
-    "gender": "male"
-  },
-  "goldie_lemon": {
-    "id": 14,
-    "name": "goldie_lemon",
-    "position": "df",
-    "affinity": "fire",
-    "gender": "female"
-  },
-  "heath_moore": {
-    "id": 18,
-    "name": "heath_moore",
-    "position": "fw",
-    "affinity": "fire",
-    "gender": "male"
-  },
-  "hurley_kane": {
-    "id": 26,
-    "name": "hurley_kane",
-    "position": "df",
-    "affinity": "wind",
-    "gender": "male"
-  },
-  "jack_wallside": {
-    "id": 4,
-    "name": "jack_wallside",
-    "position": "df",
-    "affinity": "earth",
-    "gender": "male"
-  },
-  "jean_pierre_lapin": {
-    "id": 21,
-    "name": "jean_pierre_lapin",
-    "position": "df",
-    "affinity": "earth",
-    "gender": "male"
-  },
-  "jordan_greenway": {
-    "id": 17,
-    "name": "jordan_greenway",
-    "position": "mf",
-    "affinity": "wood",
-    "gender": "male"
-  },
-  "jude_sharp": {
-    "id": 3,
-    "name": "jude_sharp",
-    "position": "mf",
-    "affinity": "wind",
-    "gender": "male"
-  },
-  "kevin_dragonfly": {
-    "id": 23,
-    "name": "kevin_dragonfly",
-    "position": "fw",
-    "affinity": "wood",
-    "gender": "male"
-  },
-  "mark_evans": {
-    "id": 1,
-    "name": "mark_evans",
-    "position": "gk",
-    "affinity": "earth",
-    "gender": "male"
-  },
-  "nathan_swift": {
-    "id": 13,
-    "name": "nathan_swift",
-    "position": "df",
-    "affinity": "wind",
-    "gender": "male"
-  },
-  "riccardo_di_rigo": {
-    "id": 20,
-    "name": "riccardo_di_rigo",
-    "position": "mf",
-    "affinity": "wood",
-    "gender": "male"
-  },
-  "samguk_han": {
-    "id": 7,
-    "name": "samguk_han",
-    "position": "gk",
-    "affinity": "fire",
-    "gender": "male"
-  },
-  "scotty_banyan": {
-    "id": 16,
-    "name": "scotty_banyan",
-    "position": "df",
-    "affinity": "wood",
-    "gender": "male"
-  },
-  "suzette_hartland": {
-    "id": 19,
-    "name": "suzette_hartland",
-    "position": "fw",
-    "affinity": "wood",
-    "gender": "female"
-  },
-  "tezcat": {
-    "id": 22,
-    "name": "tezcat",
-    "position": "fw",
-    "affinity": "wood",
-    "gender": "male"
-  },
-  "victor_blade": {
-    "id": 27,
-    "name": "victor_blade",
-    "position": "fw",
-    "affinity": "fire",
-    "gender": "male"
-  },
-  "victoria_vanguard": {
-    "id": 25,
-    "name": "victoria_vanguard",
-    "position": "mf",
-    "affinity": "wind",
-    "gender": "female"
-  },
-  "xavier_foster": {
-    "id": 8,
-    "name": "xavier_foster",
-    "position": "fw",
-    "affinity": "fire",
-    "gender": "male"
-  },
-  "zanark_avalonic": {
-    "id": 28,
-    "name": "zanark_avalonic",
-    "position": "fw",
-    "affinity": "earth",
-    "gender": "male"
   }
-}
+]
